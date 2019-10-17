@@ -42,40 +42,6 @@ q:after {
     content: close-quote
 }
 
-
-.menu {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    font-size: 17px;
-    height: 35px;
-    line-height: 200%;
-    display: inline-block;
-}
-
-.menu a {
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
-}
-
-.menu > li {
-    float: left;
-    width: 150px;
-    height: 40px;
-    border-right: 1px dashed #384d93;
-}
-
-.menu > li:hover {
-    background-color: #2084c2;
-    cursor: pointer;
-}
-
-
-.menu > li:first-child {
-    border-left: 1px dashed #384d93;
-}
-
 .walletspage p {
     text-align: justify;
 }
@@ -100,7 +66,6 @@ h2 {
     margin-bottom: 20px;
     text-align: center;
 }
-
 
 .wrapper1 {
     box-shadow: inset 0px 1px 0px 0px #caefab;
@@ -164,65 +129,57 @@ h2 {
     border: 0;
 }
 
-#userRegistration {
-    margin: 10px;
-    line-height: 30px;
-    text-align: left;
-}
-
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=number],
-input[type=date] {
-    width: 300px;
+.wrapperForm {
+    border: 2px solid #384d93;
+    border-radius: 5px;
+    display: block;
     background-color: #efefef;
     color: #666;
-    border: 2px solid #384d93;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+}
+.wrapperForm > label {
+    margin-top: 5px;
+    background-color: transparent;
+    margin-right: 5px;
 }
 
-input[type=submit] {
-    width: 300px;
-    background-color: #193286;
-    color: #999;
-    border: 2px solid #384d93;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-left: 55px;
-    margin-right: 55px;
+.wrapperForm > label > input {
+   border: 1px dashed #384d93;
+    
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 17px;
+    height: 35px;
+    line-height: 200%;
+    display: inline-block;
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
+
+.menu > li {
+    float: left;
+    width: 150px;
+    height: 40px;
+    border-right: 1px dashed #384d93;
+}
+
+.menu > li:hover {
+    background-color: #2084c2;
     cursor: pointer;
 }
 
-input[type=submit]:hover {
-    background-color: #204397;
+
+.menu > li:first-child {
+    border-left: 1px dashed #384d93;
 }
 
-#userLogging a:link {
-    color: #4dbe12;
-    text-decoration: none;
-}
-
-#userLogging a:visited {
-    color: #4dbe12;
-    text-decoration: none;
-}
-
-#userLogging a:hover {
-    color: #5ecf33;
-    text-decoration: none;
-}
-
-#userLogging a:active {
-    color: #4dbe12;
-    text-decoration: none;
-}
 
 .menuTile {
     margin-top: 20px;
@@ -338,17 +295,30 @@ a.tileLink {
 }
 
 @media (max-width: 768px) {
-    
-    .tile{
-        margin-top: 20px;
+
+    .walletspage > p{
+     text-align: left;
     }
-    #logout
-    {
+    h1{
+        font-size: 26px;
+    }
+    
+    h2{
         font-size: 24px;
     }
-    
-    .walletspage p{
-        text-align: left;
-        
+    .tile {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
     }
+    
+    #login {
+        font-size: 24px;
+    }
+
+    #logout {
+        font-size: 24px;
+    }
+
 }

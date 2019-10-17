@@ -35,14 +35,27 @@
                     <div class="col-sm-12 mx-auto my-auto">
                         <div class="tile">
                             <h2 class="h3 font-weight-bold my-2 text-uppercase">Podaj swoje dane:</h2>
-                            <form>
-                                <div class="wrapperForm">
+                            <form action="userMenu.php" method="post">
+                                <div class="wrapperForm col-sm-6 ml-2 my-3 mb-2">
+                                    <label><i class="icon-user"></i><input type="text" name="login" placeholder="Podaj swój login" required></label>
                                 </div>
-                                <div class=" ">
+                                <div class="wrapperForm col-sm-6 ml-2 my-3 mb-2">
+                                    <label><i class="icon-key"></i><input type="password" name="password" placeholder="Podaj swoje hasło" required></label>
+                                </div>
+                                
+                                <div class="wrapper1 col-sm-6 mx-auto mb-5">
                                     <i class="icon-login"></i>
-                                    <input type="button" id="login" value="Zaloguj się!" onclick="window.location.href='#'">
+                                    <input type="submit" id="login" value="Zaloguj się!">
                                 </div>
                             </form>
+                            <span class="col-sm-12 mx-auto"><i>Nie posiadasz konta? - Dołącz do nas!</i></span>
+                             <div class="wrapper2 col-sm-6 mx-auto mb-4">
+                                <i class="icon-user-plus"></i>
+                                <input type="button" id="logout" value="Dołącz do nas!" onclick="window.location.href='#'">
+                                <!--onclick="window.location.href='https://www.computerhope.com/'">-->
+                            </div>                     
+                            
+                            
                         </div>
                     </div>
                 </div>
