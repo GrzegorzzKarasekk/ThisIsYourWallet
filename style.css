@@ -139,7 +139,6 @@ h2 {
 .wrapperForm > label {
     margin-top: 5px;
     background-color: transparent;
-    margin-right: 5px;
 }
 
 .wrapperForm > label > input {
@@ -307,10 +306,9 @@ a.tileLink {
         font-size: 24px;
     }
     .tile {
-        margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
-        width: 75%;
+
     }
     
     #login {
@@ -320,5 +318,5 @@ a.tileLink {
     #logout {
         font-size: 24px;
     }
-
+    
 }

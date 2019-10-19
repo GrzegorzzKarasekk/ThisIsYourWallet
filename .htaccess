@@ -6,6 +6,8 @@ Deny from all
 
 RewriteEngine on
 RewriteRule zarzadzaj-swoim-budzetem index.html
+RewriteRule zaloguj-sie signInHtml.html
+RewriteRule zarejestruj-sie signUpHtml.html
 RewriteRule dodaj-przychod dodajprzychod.html
 RewriteRule dodaj-wydatek dodajwydatek.html
 RewriteRule przegladaj-bilans bilans.html
