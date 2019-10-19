@@ -29,33 +29,32 @@
         <article class="walletspage">
             <div class="container">
                 <header>
-                    <h1 class="font-weight-bold text-uppercase mb-2">Logowanie</h1>
+                    <h1 class="font-weight-bold text-uppercase mb-2">Rejsetracja</h1>
                 </header>
                 <div class="row mb-4">
                     <div class="col-sm-12 mx-auto my-auto">
                         <div class="tile col-12 mx-auto my-auto">
-                            <h2 class="h3 font-weight-bold my-2 text-uppercase">Podaj swoje dane:</h2>
+                            <h2 class="h3 font-weight-bold my-2 text-uppercase">Wprowadź swoje dane:</h2>
                             <form action="userMenu.php" method="post">
-                                <div class="wrapperForm col-12 col-md-6 ml-2 mr-2 my-3 mb-2">
-                                    <label><i class="icon-mail-alt"></i><input type="email" name="email" placeholder="Podaj swój login" required></label>
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <label><i class="icon-user"></i><input type="text" name="imie" placeholder="Wprowadź imę" required></label>
+                                </div>                                
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <label><i class="icon-mail-alt"></i><input type="email" name="email" placeholder="Wprowadź email" required></label>
                                 </div>
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <label><i class="icon-key"></i><input type="password" name="password" placeholder="Podaj swoje hasło" required></label>
+                                    <label><i class="icon-key"></i><input type="password" name="password" placeholder="Wprowadź hasło" required></label>
                                 </div>
-                                
-                                <div class="wrapper1 col-12 col-md-6 mx-auto mb-5">
-                                    <i class="icon-login"></i>
-                                    <input type="submit" id="login" value="Zaloguj się!">
+                                                                
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <label><i class="icon-key"></i><input type="password" name="password2" placeholder="Powtórz hasło" required></label>
+                                </div>
+
+                                <div class="wrapper2 col-12 col-md-6 mx-auto mb-4">
+                                    <i class="icon-user-plus"></i>
+                                    <input type="submit" id="logout" value="Zarejestruj się!">
                                 </div>
                             </form>
-                            <span class="col-sm-12 mx-auto"><i>Nie posiadasz konta? - Dołącz do nas!</i></span>
-                             <div class="wrapper2 col-12 col-md-6 mx-auto mb-4">
-                                <i class="icon-user-plus"></i>
-                                <input type="button" id="logout" value="Dołącz do nas!" onclick="window.location.href='zarejestruj-sie'">
-                                <!--onclick="window.location.href='https://www.computerhope.com/'">-->
-                            </div>                     
-                            
-                            
                         </div>
                     </div>
                 </div>
