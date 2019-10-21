@@ -10,17 +10,12 @@ body {
     font-size: 48px;
 }
 
-.walletspage {
-    text-align: center;
+.logotext {
+    text-shadow: -1px 0 #3361F5, 0 1px #3361F5, 1px 0 #3361F5, 0 -1px #3361F5;
 }
 
-nav {
-    width: 100%;
-    padding: 5px 0px;
-    background-color: #384D93;
+.walletspage {
     text-align: center;
-    border-top: 1px solid #3361F5;
-    border-bottom: 1px solid #3361F5;
 }
 
 h1 {
@@ -51,7 +46,6 @@ q:after {
     width: 100%;
     border: 5px solid #384d93;
     border-radius: 10px;
-    */
 }
 
 .rectangle {
@@ -136,63 +130,57 @@ h2 {
     background-color: #efefef;
     color: #666;
 }
+
 .wrapperForm > label {
     margin-top: 5px;
     background-color: transparent;
 }
 
 .wrapperForm > label > input {
-   border: 1px dashed #384d93;
-    
+    border: 1px dashed #384d93;
+
 }
 
-.menu {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    font-size: 17px;
-    height: 35px;
-    line-height: 200%;
-    display: inline-block;
+nav {
+    min-height: 58px;
+    border-top: 1px solid #3361F5;
+    border-bottom: 1px solid #3361F5;
 }
 
-.menu a {
+.bg-nav-Wallet {
+    background-color: #384D93;
+}
+
+nav a:link {
     color: #ffffff;
     text-decoration: none;
-    display: block;
 }
 
-.menu > li {
-    float: left;
-    width: 150px;
-    height: 40px;
-    border-right: 1px dashed #384d93;
+nav a:visited {
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.menu > li:hover {
-    background-color: #2084c2;
-    cursor: pointer;
+nav a:hover {
+    color: #2084c2;
 }
 
-
-.menu > li:first-child {
-    border-left: 1px dashed #384d93;
+.divider{
+    border:1px dashed #fff;
 }
 
-
-.menuTile {
-    margin-top: 20px;
+.tileMenu {
+    padding: 10px;
+    font-size: 26px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
 }
 
 #menuTile1 {
-    margin: 20px 87px;
-    width: 300px;
-    height: 186px;
-    background-color: #009d5b;
-    float: left;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #10A14A;
+    border-radius: 10%;
+    padding: 15% 25%;
 }
 
 #menuTile1:hover {
@@ -200,15 +188,16 @@ h2 {
     cursor: pointer;
 }
 
+.icon-calendar-plus-o, .menuButton1 {
+    color: #0A612D;
+    background-color: transparent;
+    border: 0;    
+}
+
 #menuTile2 {
-    margin: 20px 87px;
-    width: 300px;
-    height: 186px;
-    background-color: #d83224;
-    float: left;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #108A86;
+    border-radius: 10%;
+    padding: 15% 25%;
 }
 
 #menuTile2:hover {
@@ -216,15 +205,16 @@ h2 {
     cursor: pointer;
 }
 
+.icon-calendar-minus-o, .menuButton2 {
+    color: #094A48;
+    background-color: transparent;
+    border: 0;    
+}
+
 #menuTile3 {
-    margin: 50px 325px;
-    width: 300px;
-    height: 186px;
-    background-color: #4413a2;
-    float: left;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #00D4CD;
+    border-radius: 10%;
+    padding: 15% 25%;
 }
 
 #menuTile3:hover {
@@ -232,15 +222,16 @@ h2 {
     cursor: pointer;
 }
 
+.icon-calc, .menuButton3 {
+    color: #00948F;
+    background-color: transparent;
+    border: 0;    
+}
+
 #menuTile4 {
-    margin: 20px 87px;
-    width: 300px;
-    height: 186px;
-    background-color: #505050;
-    float: left;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #D400A8;
+    border-radius: 10%;
+    padding: 15% 25%;
 }
 
 #menuTile4:hover {
@@ -248,15 +239,17 @@ h2 {
     cursor: pointer;
 }
 
+.icon-cogs, .menuButton4 {
+    color: #940076;
+    background-color: transparent;
+    border: 0;  
+    margin: 0;
+}
+
 #menuTile5 {
-    margin: 20px 87px;
-    width: 300px;
-    height: 186px;
-    background-color: #de002b;
-    float: left;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #AC3C5D;
+    border-radius: 10%;
+    padding: 15% 25%;
 }
 
 #menuTile5:hover {
@@ -264,53 +257,43 @@ h2 {
     cursor: pointer;
 }
 
-a.tileLink {
-    color: #ffffff;
-    font-size: 25px;
-    text-decoration: none;
-    display: block;
-    width: 300px;
-    height: 186px;
+.icon-logout, .menuButton5 {
+    color: #6B253A;
+    background-color: transparent;
+    border: 0;    
 }
 
-#addIncome {
-    font-size: 22px;
-    text-align: justify;
+
+@media (max-width: 925px) {
+    .divider{
+    border:none;
+}
 }
 
-.column {
-    float: left;
-    margin: 15px 32px;
-}
 
-.column .cancel {
-    background-color: #cd001a;
-    border: 2px solid #384d93;
-}
 
-#addExpense {
-    font-size: 22px;
-    text-align: justify;
-}
+
 
 @media (max-width: 768px) {
 
-    .walletspage > p{
-     text-align: left;
+    .walletspage > p {
+        text-align: left;
     }
-    h1{
+
+    h1 {
         font-size: 26px;
     }
-    
-    h2{
+
+    h2 {
         font-size: 24px;
     }
+
     .tile {
         margin-left: auto;
         margin-right: auto;
 
     }
-    
+
     #login {
         font-size: 24px;
     }
@@ -319,4 +302,21 @@ a.tileLink {
         font-size: 24px;
     }
     
+    .icon-calendar-plus-o, .menuButton1 {
+    font-size: 20px;    
+}
+    .icon-calendar-minus-o, .menuButton2 {
+    font-size: 20px;    
+    }
+    .icon-calc, .menuButton3 {
+    font-size: 20px;    
+    }
+    
+    .icon-cogs, .menuButton4 {
+    font-size: 20px;
+    }
+    
+    .icon-logout, .menuButton5 {
+    font-size: 20px;
+
 }
