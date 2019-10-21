@@ -165,8 +165,8 @@ nav a:hover {
     color: #2084c2;
 }
 
-.divider{
-    border:1px dashed #fff;
+.divider {
+    border: 1px dashed #fff;
 }
 
 .tileMenu {
@@ -188,10 +188,11 @@ nav a:hover {
     cursor: pointer;
 }
 
-.icon-calendar-plus-o, .menuButton1 {
+.icon-calendar-plus-o,
+.menuButton1 {
     color: #0A612D;
     background-color: transparent;
-    border: 0;    
+    border: 0;
 }
 
 #menuTile2 {
@@ -205,10 +206,11 @@ nav a:hover {
     cursor: pointer;
 }
 
-.icon-calendar-minus-o, .menuButton2 {
+.icon-calendar-minus-o,
+.menuButton2 {
     color: #094A48;
     background-color: transparent;
-    border: 0;    
+    border: 0;
 }
 
 #menuTile3 {
@@ -222,10 +224,11 @@ nav a:hover {
     cursor: pointer;
 }
 
-.icon-calc, .menuButton3 {
+.icon-calc,
+.menuButton3 {
     color: #00948F;
     background-color: transparent;
-    border: 0;    
+    border: 0;
 }
 
 #menuTile4 {
@@ -239,10 +242,11 @@ nav a:hover {
     cursor: pointer;
 }
 
-.icon-cogs, .menuButton4 {
+.icon-cogs,
+.menuButton4 {
     color: #940076;
     background-color: transparent;
-    border: 0;  
+    border: 0;
     margin: 0;
 }
 
@@ -257,22 +261,19 @@ nav a:hover {
     cursor: pointer;
 }
 
-.icon-logout, .menuButton5 {
+.icon-logout,
+.menuButton5 {
     color: #6B253A;
     background-color: transparent;
-    border: 0;    
+    border: 0;
 }
 
 
 @media (max-width: 925px) {
-    .divider{
-    border:none;
+    .divider {
+        border: none;
+    }
 }
-}
-
-
-
-
 
 @media (max-width: 768px) {
 
@@ -291,7 +292,6 @@ nav a:hover {
     .tile {
         margin-left: auto;
         margin-right: auto;
-
     }
 
     #login {
@@ -301,22 +301,29 @@ nav a:hover {
     #logout {
         font-size: 24px;
     }
-    
-    .icon-calendar-plus-o, .menuButton1 {
-    font-size: 20px;    
-}
-    .icon-calendar-minus-o, .menuButton2 {
-    font-size: 20px;    
-    }
-    .icon-calc, .menuButton3 {
-    font-size: 20px;    
-    }
-    
-    .icon-cogs, .menuButton4 {
-    font-size: 20px;
-    }
-    
-    .icon-logout, .menuButton5 {
-    font-size: 20px;
 
+    .icon-calendar-plus-o,
+    .menuButton1 {
+        font-size: 20px;
+    }
+
+    .icon-calendar-minus-o,
+    .menuButton2 {
+        font-size: 20px;
+    }
+
+    .icon-calc,
+    .menuButton3 {
+        font-size: 20px;
+    }
+
+    .icon-cogs,
+    .menuButton4 {
+        font-size: 20px;
+    }
+
+    .icon-logout,
+    .menuButton5 {
+        font-size: 20px;
+    }
 }
