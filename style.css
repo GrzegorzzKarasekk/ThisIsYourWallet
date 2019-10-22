@@ -1,5 +1,5 @@
 body {
-    background-color: #191f21;
+    background-color: #273033;
     color: #fff;
     font-size: 17px;
     font-family: 'Lato', sans-serif;
@@ -56,9 +56,8 @@ h2 {
     font-size: 36px;
     border-top: 2px dashed #384D93;
     border-bottom: 2px dashed #384D93;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    text-align: center;
+    text-align: center;    
+    
 }
 
 .wrapper1 {
@@ -126,19 +125,21 @@ h2 {
 .wrapperForm {
     border: 2px solid #384d93;
     border-radius: 5px;
-    display: block;
     background-color: #efefef;
     color: #666;
+    text-align: left;
 }
 
 .wrapperForm > label {
     margin-top: 5px;
     background-color: transparent;
+    
 }
 
 .wrapperForm > label > input {
     border: 1px dashed #384d93;
-
+    font-size:90%;
+   
 }
 
 nav {
