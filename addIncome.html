@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Domowy Portfel</title>
+    <meta name="description" content="Opanuj umiejętność zarządzania swoim budżetem. Przejmij kontrolę nad swoim portfelem. Sprawdź na czym możesz oszczędzić!">
+    <meta name="keywords" content="budżet, wydatki, zarządzanie, przychody, bilans">
+    <meta name="author" content="Grzegorz Karasek">
+
+    <meta http-equiv="X-Ua-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/fontello.css" type="text/css" />
+
+</head>
+
+<body>
+    <div class="col-sm-12 logo mx-auto my-1 text-center">
+        <a href="zarzadzaj-swoim-budzetem"><img src="jpg/portfelicon.jpg" class="img-fluid" alt="strona główna" /></a>
+        <div class=" logotext d-inline-block"><span style="color:#384D93 ">Domowy</span>Portfel</div>
+    </div>
+
+    <nav class="navbar navbar-dark bg-nav-Wallet navbar-expand-lg">
+
+        <button class="navbar-toggler order-first" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainmenu">
+
+            <ul class="navbar-nav mx-auto">
+                <li role="separator" class="divider"></li>
+
+                <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Strona główna</a></li>
+
+                <li role="separator" class="divider"></li>
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item mx-4"><a href="dodaj-przychod">Dodaj przychód</a></li>
+
+                <li role="separator" class="divider"></li>
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item mx-4"><a href="dodaj-wydatek">Dodaj wydatek</a></li>
+
+                <li role="separator" class="divider"></li>
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item mx-4"><a href="przegladaj-bilans">Przeglądaj bilans</a></li>
+
+                <li role="separator" class="divider"></li>
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item mx-4"><a href="zmien-ustawienia">Ustawienia</a></li>
+
+                <li role="separator" class="divider"></li>
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Wyloguj</a></li>
+
+                <li role="separator" class="divider"></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <main>
+        <article class="walletspage">
+            <div class="container">
+                <header>
+                    <h1 class="font-weight-bold text-uppercase mb-2">Dodaj nowy przychód</h1>
+                </header>
+                <div class="text-justify mb-4" style="font-size:20px">
+                    <q>Oszczędność jest to umiejętność unikania zbędnych wydatków</q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">Seneka Młodszy</span>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-sm-12 mx-auto my-auto">
+                        <div class="tile col-12 mx-auto my-auto">
+                            <h2 class="h3 font-weight-bold my-3 text-uppercase">Wprowadź dane:</h2>
+
+                            <form action="userMenu.php" method="post">
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <label for="income"> Kwota:</label> <label><input type="number" name="income" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" required></label>
+                                </div>
+
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" min="2000-01-01" required></label>
+                                </div>
+
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <fieldset>
+
+                                        <legend> Kategoria: </legend>
+                                        <div><label><input type="radio" value="1" name="kategoria" checked>Wynagrodzenie</label></div>
+                                        <div><label><input type="radio" value="2" name="kategoria">Odsetki bankowe</label></div>
+                                        <div><label><input type="radio" value="3" name="kategoria">Sprzedaż na allegro</label></div>
+                                        <div><label><input type="radio" value="4" name="kategoria">Inne</label></div>
+
+                                    </fieldset>
+                                </div>
+
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
+                                    <br />
+                                    <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320" minlength="10"></textarea>
+                                </div>
+
+
+                                <label class="wrapperAccept col-12 col-md-5 mx-2  my-3 mb-2 d-inline-block"><i class="icon-calendar-plus-o"></i><input type="submit" class="dodaj" value="Dodaj"></label>
+
+                                <div class="wrapperCancel col-12 col-md-5 mx-2 my-3 mb-2 d-inline-block" onclick="window.location.href='menu-uzytkownika'">
+                                    <i class="icon-calendar-times-o"></i>
+                                    <input type="button" class="anuluj" value="Anuluj">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <div class="rectangle">2019 &copy; Domowy portfel - Wszelkie prawa zastrzeżone <i class="icon-gmail"> </i>grzegorz.karasek.programista@gmail.com
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

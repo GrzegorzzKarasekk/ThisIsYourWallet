@@ -8,9 +8,9 @@ RewriteEngine on
 RewriteRule zarzadzaj-swoim-budzetem index.html
 RewriteRule zaloguj-sie signInHtml.html
 RewriteRule zarejestruj-sie signUpHtml.html
-RewriteRule dodaj-przychod dodajprzychod.html
-RewriteRule dodaj-wydatek dodajwydatek.html
+RewriteRule dodaj-przychod addIncome.html
+RewriteRule dodaj-wydatek addExpense.html
 RewriteRule przegladaj-bilans bilans.html
-RewriteRule zmien-ustawienia ustawienia.html
+RewriteRule zmien-ustawienia settings.html
 RewriteRule kontakt-programista kontakt.html
 RewriteRule menu-uzytkownika userMenu.html
