@@ -393,4 +393,7 @@ nav a:hover {
     .menuButton5 {
         font-size: 20px;
     }
+    .quotation{
+        text-align: left;
+    }
 }
