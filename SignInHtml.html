@@ -41,16 +41,14 @@
                             <h2 class="h3 font-weight-bold my-2 text-uppercase">Podaj swoje dane:</h2>
                             <form action="userMenu.php" method="post">
                                 <div class="wrapperForm col-12 col-md-6 ml-2 mr-2 my-3 mb-2">
-                                    <label><i class="icon-mail-alt"></i><input type="email" name="email" placeholder="Podaj swój login" required></label>
+                                    <label><i class="icon-mail-alt"></i><input type="email" name="email" placeholder="Podaj swój email" required></label>
                                 </div>
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
                                     <label><i class="icon-key"></i><input type="password" name="password" placeholder="Podaj swoje hasło" required></label>
                                 </div>
 
-                                <div class="wrapper1 col-12 col-md-6 mx-auto mb-5">
-                                    <label><i class="icon-login"></i>
-                                        <input type="submit" id="login" value="Zaloguj się!"></label>
-                                </div>
+                                <label class="wrapper1 col-12 col-md-6 mx-auto mb-5"><i class="icon-login"></i>
+                                    <input type="submit" id="login" value="Zaloguj się!"></label>
                             </form>
                             <span class="col-sm-12 mx-auto"><i>Nie posiadasz konta? - Dołącz do nas!</i></span>
                             <div class="wrapper2 col-12 col-md-6 mx-auto mb-4" onclick="window.location.href='zarejestruj-sie'">

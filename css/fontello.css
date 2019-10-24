@@ -72,6 +72,6 @@
 .icon-calc:before { content: '\f1ec'; } /* '' */
 .icon-user-plus:before { content: '\f234';font-size:26px } /* '' */
 .icon-calendar-plus-o:before { content: '\f271';font-size:26px } /* '' */
-.icon-calendar-minus-o:before { content: '\f272'; } /* '' */
-.icon-calendar-times-o:before { content: '\f273'; } /* '' */
+.icon-calendar-minus-o:before { content: '\f272';font-size:26px } /* '' */
+.icon-calendar-times-o:before { content: '\f273';font-size:26px;color:#400000 } /* '' */
 .icon-calendar-check-o:before { content: '\f274'; } /* '' */
