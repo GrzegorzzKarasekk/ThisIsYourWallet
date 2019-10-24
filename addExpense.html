@@ -75,10 +75,10 @@
         <article class="walletspage">
             <div class="container">
                 <header>
-                    <h1 class="font-weight-bold text-uppercase mb-2">Dodaj nowy przychód</h1>
+                    <h1 class="font-weight-bold text-uppercase mb-2">Dodaj nowy wydatek</h1>
                 </header>
                 <div class="quotation text-justify mb-4" style="font-size:20px">
-                    <q>Oszczędność jest to umiejętność unikania zbędnych wydatków</q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">Seneka Młodszy</span>
+                    <q>Zasada nr 1 – nigdy nie trać pieniędzy. Zasada nr 2. – nigdy nie zapominaj o zasadzie nr 1.</q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">Warren Buffett</span>
                 </div>
                 <div class="row mb-4">
                     <div class="col-sm-12 mx-auto my-auto">
@@ -96,12 +96,34 @@
 
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
                                     <fieldset>
+                                        <legend> Sposób płatności: </legend>
+                                        <div><label><input type="radio" value="1" name="platnosc" checked>Gotówka</label></div>
+                                        <div><label><input type="radio" value="2" name="platnosc">Karta debetowa</label></div>
+                                        <div><label><input type="radio" value="3" name="platnosc">Karta kredytowa</label></div>
 
-                                        <legend> Kategoria: </legend>
-                                        <div><label><input type="radio" value="1" name="kategoria" checked>Wynagrodzenie</label></div>
-                                        <div><label><input type="radio" value="2" name="kategoria">Odsetki bankowe</label></div>
-                                        <div><label><input type="radio" value="3" name="kategoria">Sprzedaż na allegro</label></div>
-                                        <div><label><input type="radio" value="4" name="kategoria">Inne</label></div>
+                                    </fieldset>
+                                </div>
+
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <fieldset>
+
+                                        <div><label><input type="radio" value="1" name="kategoria" checked>Jedzenie</label></div>
+                                        <div><label><input type="radio" value="2" name="kategoria">Mieszkanie</label></div>
+                                        <div><label><input type="radio" value="3" name="kategoria">Transport</label></div>
+                                        <div><label><input type="radio" value="4" name="kategoria">Telekomunikacja</label></div>
+                                        <div><label><input type="radio" value="5" name="kategoria">Opieka zdrowotna</label></div>
+                                        <div><label><input type="radio" value="6" name="kategoria">Ubrania</label></div>
+                                        <div><label><input type="radio" value="7" name="kategoria">Higiena</label></div>
+                                        <div><label><input type="radio" value="8" name="kategoria">Dzieci</label></div>
+                                        <div><label><input type="radio" value="9" name="kategoria">Rozrywka</label></div>
+                                        <div><label><input type="radio" value="10" name="kategoria">Wycieczka</label></div>
+                                        <div><label><input type="radio" value="11" name="kategoria">Szkolenia</label></div>
+                                        <div><label><input type="radio" value="12" name="kategoria">Książki</label></div>
+                                        <div><label><input type="radio" value="13" name="kategoria">Oszczędności</label></div>
+                                        <div><label><input type="radio" value="14" name="kategoria">Emerytura</label></div>
+                                        <div><label><input type="radio" value="15" name="kategoria">Spłata długów</label></div>
+                                        <div><label><input type="radio" value="16" name="kategoria">Darowizna</label></div>
+                                        <div><label><input type="radio" value="17" name="kategoria">Inne wydatki</label></div>
 
                                     </fieldset>
                                 </div>
@@ -113,7 +135,7 @@
                                 </div>
 
 
-                                <label class="wrapperAccept col-12 col-md-5 mx-2  my-3 mb-2 d-inline-block"><i class="icon-calendar-plus-o"></i><input type="submit" class="dodaj" value="Dodaj"></label>
+                                <label class="wrapperAccept col-12 col-md-5 mx-2  my-3 mb-2 d-inline-block"><i class="icon-calendar-minus-o"></i><input type="submit" class="dodaj" value="Dodaj"></label>
 
                                 <div class="wrapperCancel col-12 col-md-5 mx-2 my-3 mb-2 d-inline-block" onclick="window.location.href='menu-uzytkownika'">
                                     <i class="icon-calendar-times-o"></i>
@@ -135,6 +157,4 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-</body>
-
-</html>
+</body></html>
