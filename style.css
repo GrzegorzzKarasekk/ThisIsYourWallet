@@ -400,10 +400,12 @@ td {
 
 .edit:hover {
     background-color: #0D1170;
+    cursor: pointer;
 }
 
 .delete:hover {
     background-color: #9C1311;
+    cursor: pointer;
 
 }
 
@@ -417,6 +419,67 @@ td {
 .dateBalance {
     padding: 0;
 }
+
+.tileOptionsEdit{
+    border: 5px solid #384d93;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.editOptions{
+    width: 32%;
+    text-align: center;
+    margin-bottom:10px;
+    border: 1px solid #384d93;
+    background-color: #0D1170;    
+}
+
+.deleteOptions{
+    width: 32%;
+    text-align: center;
+    margin-bottom:10px;
+    border: 1px solid #384d93;
+    background-color: #9C1311;    
+}
+
+.addOptions{
+    width: 32%;
+    text-align: center;
+    margin-bottom:10px;
+    border: 1px solid #384d93;
+    background-color: #219C1F;    
+}
+
+.editUser{
+    text-align: center;
+    margin-bottom:10px;
+    border: 1px solid #384d93;
+    background-color: #0D1170;    
+}
+
+.deleteUser{
+    text-align: center;
+    margin-bottom:10px;
+    border: 1px solid #384d93;
+    background-color: #9C1311;    
+}
+
+.addOptions:hover{
+    background-color: #09520D;
+    cursor: pointer; 
+}
+
+.editOptions:hover, .editUser:hover{
+    background-color: #384d93;
+    cursor: pointer;
+}
+
+.deleteOptions:hover, .deleteUser:hover{
+    background-color: #BF1919;
+    cursor: pointer;
+}
+
+
 
 @media (max-width: 991px) {
     table {
