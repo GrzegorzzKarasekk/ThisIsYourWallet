@@ -21,7 +21,7 @@
 
 <body>
     <div class="col-sm-12 logo mx-auto my-1 text-center">
-        <a href="zarzadzaj-swoim-budzetem"><img src="jpg/portfelicon.jpg" class="img-fluid" alt="strona główna" /></a>
+        <a href="menu-uzytkownika"><img src="jpg/portfelicon.jpg" class="img-fluid" alt="strona główna" /></a>
         <div class=" logotext d-inline-block"><span style="color:#384D93 ">Domowy</span>Portfel</div>
     </div>
 
@@ -36,7 +36,7 @@
             <ul class="navbar-nav mx-auto">
                 <li role="separator" class="divider"></li>
 
-                <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Strona główna</a></li>
+                <li class="nav-item mx-4"><a href="menu-uzytkownika">Menu uzytkownika</a></li>
 
                 <li role="separator" class="divider"></li>
                 <div class="dropdown-divider"></div>
@@ -86,15 +86,15 @@
                             <h2 class="h3 font-weight-bold my-3 text-uppercase">Wprowadź dane:</h2>
 
                             <form action="userMenu.php" method="post">
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="income"> Kwota:</label> <label><input type="number" name="income" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" required></label>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" min="2000-01-01" required></label>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <fieldset>
 
                                         <legend> Kategoria: </legend>
@@ -106,10 +106,10 @@
                                     </fieldset>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
                                     <br />
-                                    <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320" minlength="10"></textarea>
+                                    <textarea name="komentarz" id="komentarz" rows="4" cols="25" maxlength="100" minlength="10"></textarea>
                                 </div>
 
 
@@ -128,7 +128,7 @@
         </article>
     </main>
     <footer>
-        <div class="rectangle">2019 &copy; Domowy portfel - Wszelkie prawa zastrzeżone <i class="icon-gmail"> </i>grzegorz.karasek.programista@gmail.com
+        <div class="rectangle">2019 &copy; Domowy portfel - Wszelkie prawa zastrzeżone <i class="icon-mail-alt"> </i>grzegorz.karasek.programista@gmail.com
         </div>
     </footer>
 

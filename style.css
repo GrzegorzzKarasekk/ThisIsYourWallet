@@ -166,7 +166,28 @@ nav a:hover {
     color: #2084c2;
 }
 
-.divider {
+.dropdown-menu {
+    background-color: #384D93;
+    border: none;
+}
+
+.dropdown-menu a:link {
+
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dropdown-menu a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    color: #2084c2;
+    background-color: #384D93;
+}
+
+*/ .divider {
     border: 1px dashed #fff;
 }
 
@@ -269,7 +290,6 @@ nav a:hover {
     border: 0;
 }
 
-
 .wrapperAccept {
     box-shadow: inset 0px 1px 0px 0px #caefab;
     background-color: #77d42a;
@@ -293,19 +313,17 @@ nav a:hover {
     top: 1px;
 }
 
-.wrapperAccept > .dodaj{
+.wrapperAccept > .dodaj {
     color: #004000;
     background-color: transparent;
     border: 0;
 }
 
-.wrapperAccept >  .icon-calendar-plus-o
-{
+.wrapperAccept > .icon-calendar-plus-o {
     color: #004000;
     background-color: transparent;
     border: 0;
 }
-
 
 .wrapperCancel {
     box-shadow: inset 0px 1px 0px 0px #FF2222;
@@ -334,6 +352,76 @@ nav a:hover {
     color: #400808;
     background-color: transparent;
     border: 0;
+}
+
+.tileIncomes {
+    float: left;
+    border: 4px solid #384d93;
+    background-color: #10A14A;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+.tileExpenses {
+    float: left;
+    border: 4px solid #384d93;
+    background-color: #108A86;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+table {
+    width: 100%;
+    border: 2px ridge #384d93;
+    margin-bottom: 0px;
+}
+
+.firstTr {
+    background-color: #3361F5;
+    border-bottom: 2px ridge #384d93;
+}
+
+tr {
+    border: 1px dashed #384d93;
+}
+
+.incomeTr:hover {
+    background-color: #0A612D;
+}
+
+.expenseTr:hover {
+    background-color: #094A48;
+}
+
+td {
+    border: 1px dashed #384d93;
+}
+
+.edit:hover {
+    background-color: #0D1170;
+}
+
+.delete:hover {
+    background-color: #9C1311;
+
+}
+
+.chartStyle {
+    border: 5px solid #384d93;
+    background-color: #108A86;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.dateBalance {
+    padding: 0;
+}
+
+@media (max-width: 991px) {
+    table {
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 925px) {
@@ -393,7 +481,8 @@ nav a:hover {
     .menuButton5 {
         font-size: 20px;
     }
-    .quotation{
+
+    .quotation {
         text-align: left;
     }
 }

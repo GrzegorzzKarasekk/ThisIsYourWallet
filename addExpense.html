@@ -21,7 +21,7 @@
 
 <body>
     <div class="col-sm-12 logo mx-auto my-1 text-center">
-        <a href="zarzadzaj-swoim-budzetem"><img src="jpg/portfelicon.jpg" class="img-fluid" alt="strona główna" /></a>
+        <a href="menu-uzytkownika"><img src="jpg/portfelicon.jpg" class="img-fluid" alt="strona główna" /></a>
         <div class=" logotext d-inline-block"><span style="color:#384D93 ">Domowy</span>Portfel</div>
     </div>
 
@@ -36,7 +36,7 @@
             <ul class="navbar-nav mx-auto">
                 <li role="separator" class="divider"></li>
 
-                <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Strona główna</a></li>
+                <li class="nav-item mx-4"><a href="menu-uzytkownika">Menu użytkownika</a></li>
 
                 <li role="separator" class="divider"></li>
                 <div class="dropdown-divider"></div>
@@ -86,49 +86,51 @@
                             <h2 class="h3 font-weight-bold my-3 text-uppercase">Wprowadź dane:</h2>
 
                             <form action="userMenu.php" method="post">
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <label for="income"> Kwota:</label> <label><input type="number" name="income" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" required></label>
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
+                                    <label for="income"> Kwota:</label> <label><input type="number" name="expense" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00" required></label>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" min="2000-01-01" required></label>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <fieldset>
                                         <legend> Sposób płatności: </legend>
-                                        <div><label><input type="radio" value="1" name="platnosc" checked>Gotówka</label></div>
-                                        <div><label><input type="radio" value="2" name="platnosc">Karta debetowa</label></div>
-                                        <div><label><input type="radio" value="3" name="platnosc">Karta kredytowa</label></div>
+                                        <div><label><input type="radio" value="g" name="platnosc" checked>Gotówka</label></div>
+                                        <div><label><input type="radio" value="d" name="platnosc">Karta debetowa</label></div>
+                                        <div><label><input type="radio" value="k" name="platnosc">Karta kredytowa</label></div>
 
                                     </fieldset>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <fieldset>
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
 
-                                        <div><label><input type="radio" value="1" name="kategoria" checked>Jedzenie</label></div>
-                                        <div><label><input type="radio" value="2" name="kategoria">Mieszkanie</label></div>
-                                        <div><label><input type="radio" value="3" name="kategoria">Transport</label></div>
-                                        <div><label><input type="radio" value="4" name="kategoria">Telekomunikacja</label></div>
-                                        <div><label><input type="radio" value="5" name="kategoria">Opieka zdrowotna</label></div>
-                                        <div><label><input type="radio" value="6" name="kategoria">Ubrania</label></div>
-                                        <div><label><input type="radio" value="7" name="kategoria">Higiena</label></div>
-                                        <div><label><input type="radio" value="8" name="kategoria">Dzieci</label></div>
-                                        <div><label><input type="radio" value="9" name="kategoria">Rozrywka</label></div>
-                                        <div><label><input type="radio" value="10" name="kategoria">Wycieczka</label></div>
-                                        <div><label><input type="radio" value="11" name="kategoria">Szkolenia</label></div>
-                                        <div><label><input type="radio" value="12" name="kategoria">Książki</label></div>
-                                        <div><label><input type="radio" value="13" name="kategoria">Oszczędności</label></div>
-                                        <div><label><input type="radio" value="14" name="kategoria">Emerytura</label></div>
-                                        <div><label><input type="radio" value="15" name="kategoria">Spłata długów</label></div>
-                                        <div><label><input type="radio" value="16" name="kategoria">Darowizna</label></div>
-                                        <div><label><input type="radio" value="17" name="kategoria">Inne wydatki</label></div>
+                                    <lebel for="kategoria"> Kategoria transakcji:</lebel>
+                                    <br />
+                                    <select id="kategoria" name="kategoria" style="width:100%;">
 
-                                    </fieldset>
+                                        <option value="1" selected>Jedzenie</option>
+                                        <option value="2">Mieszkanie</option>
+                                        <option value="3">Transport</option>
+                                        <option value="4">Telekomunikacja</option>
+                                        <option value="5">Opieka zdrowotna</option>
+                                        <option value="6">Ubrania</option>
+                                        <option value="7">Higiena</option>
+                                        <option value="8">Dzieci</option>
+                                        <option value="9">Rozrywka</option>
+                                        <option value="10">Wycieczka</option>
+                                        <option value="11">Szkolenia</option>
+                                        <option value="12">Książki</option>
+                                        <option value="13">Oszczędności</option>
+                                        <option value="14">Na złotą jesień, czyli emeryturę</option>
+                                        <option value="15">Spłata długów</option>
+                                        <option value="16">Darowizna</option>
+                                        <option value="17">Inne wydatki</option>
+                                    </select>
                                 </div>
 
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
                                     <br />
                                     <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320" minlength="10"></textarea>
@@ -150,7 +152,7 @@
         </article>
     </main>
     <footer>
-        <div class="rectangle">2019 &copy; Domowy portfel - Wszelkie prawa zastrzeżone <i class="icon-gmail"> </i>grzegorz.karasek.programista@gmail.com
+        <div class="rectangle">2019 &copy; Domowy portfel - Wszelkie prawa zastrzeżone <i class="icon-mail-alt"> </i>grzegorz.karasek.programista@gmail.com
         </div>
     </footer>
 
