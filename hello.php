@@ -1,3 +1,30 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['udanarejestracja']))
+	{
+		header('Location: index.php');
+		exit();
+	}
+	else
+	{
+		unset($_SESSION['udanarejestracja']);
+	}
+	
+	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
+	if (isset($_SESSION['fr_imie'])) unset($_SESSION['fr_imie']);
+	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+	if (isset($_SESSION['fr_haslo1'])) unset($_SESSION['fr_haslo1']);
+	if (isset($_SESSION['fr_haslo2'])) unset($_SESSION['fr_haslo2']);
+	
+	//Usuwanie błędów rejestracji
+	if (isset($_SESSION['e_imie'])) unset($_SESSION['e_imie']);
+	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+	if (isset($_SESSION['e_haslo'])) unset($_SESSION['e_haslo']);
+	if (isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
+	
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -17,6 +44,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/fontello.css" type="text/css" />
 
+    <script src="https://www.google.com/recaptcha/api.js?render=_reCAPTCHA_site_key"></script>
+
 </head>
 
 <body>
@@ -32,29 +61,13 @@
         <article class="walletspage">
             <div class="container">
                 <header>
-                    <h1 class="font-weight-bold text-uppercase mb-2">Rejsetracja</h1>
+                    <h1 class="font-weight-bold text-uppercase mb-2">Dziękujemy za rejestrację w serwisie! </h1>
                 </header>
                 <div class="row mb-4">
                     <div class="col-sm-12 mx-auto my-auto">
                         <div class="tile col-12 mx-auto my-auto">
-                            <h2 class="h3 font-weight-bold my-3 text-uppercase">Wprowadź swoje dane:</h2>
-                            <form action="userMenu.php" method="post">
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <label><i class="icon-user"></i><input type="text" name="imie" placeholder="Wprowadź imię" required></label>
-                                </div>
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <label><i class="icon-mail-alt"></i><input type="email" name="email" placeholder="Wprowadź email" required></label>
-                                </div>
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <label><i class="icon-key"></i><input type="password" name="password" placeholder="Wprowadź hasło" required></label>
-                                </div>
-
-                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
-                                    <label><i class="icon-key"></i><input type="password" name="password2" placeholder="Powtórz hasło" required></label>
-                                </div>
-
-                                <label class="wrapper2 col-12 col-md-6 mx-auto mb-4"><i class="icon-user-plus"></i><input type="submit" id="logout" value="Zarejestruj się!"></label>
-                            </form>
+                            <h2 class="h3 font-weight-bold my-3 text-uppercase">Możesz już zalogować się na swoje konto!</h2>
+                            <a href="index.php"></a>
                         </div>
                     </div>
                 </div>
@@ -69,4 +82,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-</body></html>
+</body>
+
+</html>
