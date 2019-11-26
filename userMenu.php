@@ -1,3 +1,14 @@
+<?php
+session_start();//inicjalizacja sesji
+
+if(!isset($_SESSION['zalogowany']))
+{
+    header('Location:index.php');
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -58,11 +69,10 @@
 
                     <li role="separator" class="divider"></li>
                     <div class="dropdown-divider"></div>
+                    
+                    <li class="nav-item mx-4"><a href="logout.php">Wyloguj się</a></li>
 
-                    <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Wyloguj</a></li>
-
-                    <li role="separator" class="divider"></li>
-
+              
                 </ul>
 
             </div>
@@ -75,7 +85,9 @@
         <article class="walletspage">
             <div class="container">
                 <header>
-                    <h1 class="font-weight-bold text-uppercase mb-2">Witaj Kamil :D</h1>
+                   <?php
+                    echo "<h1 class='font-weight-bold text-uppercase mb-2'>Witaj ".$_SESSION['imie']." :D</h1>";
+                    ?>
                     <div class="quotation text-justify mb-4" style="font-size:20px">
                         <q>Pieniądzom trzeba rozkazywać, a nie służyć </q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">Seneka</span>
                     </div>
@@ -121,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 mx-auto my-auto" onclick="window.location.href='zarzadzaj-swoim-budzetem'">
+                    <div class="col-sm-6 mx-auto my-auto" onclick="window.location.href='logout.php'">
                         <div class="tileMenu">
                             <div id="menuTile5">
                                 <i class="icon-logout display-inline-block"></i>
