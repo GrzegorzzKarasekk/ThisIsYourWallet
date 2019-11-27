@@ -114,6 +114,7 @@ h2 {
     top: 1px;
 }
 
+
 #logout {
 
     color: #5C4133;
@@ -127,6 +128,12 @@ h2 {
     border-radius: 5px;
     background-color: #efefef;
     color: #666;
+    text-align: left;
+}
+
+.error{
+    color: red !important;
+    font-size: 75% !important;
     text-align: left;
 }
 
@@ -187,7 +194,7 @@ nav a:hover {
     background-color: #384D93;
 }
 
-*/ .divider {
+ .divider {
     border: 1px dashed #fff;
 }
 
@@ -478,8 +485,6 @@ td {
     background-color: #BF1919;
     cursor: pointer;
 }
-
-
 
 @media (max-width: 991px) {
     table {

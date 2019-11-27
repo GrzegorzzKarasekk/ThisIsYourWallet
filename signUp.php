@@ -152,7 +152,7 @@
     <link rel="stylesheet" href="css/fontello.css" type="text/css" />
 
     <script src="https://www.google.com/recaptcha/api.js?render=_reCAPTCHA_site_key"></script>
-    
+
 </head>
 
 <body>
@@ -177,56 +177,61 @@
                             <form method="post">
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
                                     <label><i class="icon-user"></i><input type="text" name="imie" placeholder="Wprowadź imię" required></label>
-                                    <?php
+                                </div>
+                                <?php
                                     if(isset($_SESSION['e_imie']))
                                     {
-                                       echo'<div class="error">'.$_SESSION['e_imie'].'</div>';
+                                       echo'<div class="error"> '.$_SESSION['e_imie'].'</div>';
                                        unset($_SESSION['e_imie']);
                                     }
-                                    ?>
-                                </div>
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
                                     <label><i class="icon-mail-alt"></i><input type="email" name="email" placeholder="Wprowadź email" required></label>
-                                    <?php
+
+                                </div>
+                                <?php
                                     if(isset($_SESSION['e_email']))
                                     {
-                                       echo'<div class="error">'.$_SESSION['e_email'].'</div>';
+                                       echo'<div class="error"> '.$_SESSION['e_email'].'</div>';
                                        unset($_SESSION['e_email']);
                                     }
-                                    ?>
-                                </div>
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
                                     <label><i class="icon-key"></i><input type="password" name="haslo1" placeholder="Wprowadź hasło" required></label>
-                                    <?php
+
+                                </div>
+                                <?php
                                     if(isset($_SESSION['e_haslo']))
                                     {
-                                       echo'<div class="error">'.$_SESSION['e_haslo'].'</div>';
-                                       unset($_SESSION['e_haslo']);
+                                        echo'<div class="error"> '.$_SESSION['e_haslo'].'</div>';
+                                        unset($_SESSION['e_haslo']);
                                     }
-                                    ?>
-                                </div>
-
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
                                     <label><i class="icon-key"></i><input type="password" name="haslo2" placeholder="Powtórz hasło" required></label>
-                                    <?php
+
+                                </div>
+                                <?php
                                     if(isset($_SESSION['e_haslo']))
                                     {
-                                       echo'<div class="error">'.$_SESSION['e_haslo'].'</div>';
+                                       echo'<div class="error"> '.$_SESSION['e_haslo'].'</div>';
                                        unset($_SESSION['e_haslo']);
                                     }
-                                    ?>
-                                </div>
-                                
-                                <div class="g-recaptcha wrapperForm col-12 col-md-6 ml-2 my-3 mb-2" data-sitekey="6Lc5fMQUAAAAAH5CL-lMZLub6PWRH0xUtrvBCZL_"></div>
-
-                                <?php
-                                if(isset($_SESSION['e_bot']))
-                                {
-                                    echo'<div class="error">'.$_SESSION['e_bot'].'</div>';
-                                    unset($_SESSION['e_bot']);
-                                }
                                 ?>
-                                                       
+                                <div class="wrapperForm col-12 col-md-6 ml-2 my-3 mb-2">
+                                    <div class="g-recaptcha my-2" data-sitekey="6Lc5fMQUAAAAAH5CL-lMZLub6PWRH0xUtrvBCZL_">
+                                    </div>
+
+                                </div>
+                                <?php
+                                    if(isset($_SESSION['e_bot']))
+                                    {
+                                        echo'<div class="error">'.$_SESSION['e_bot'].'</div>';
+                                        unset($_SESSION['e_bot']);
+                                    }
+                                ?>
+
+
                                 <label class="wrapper2 col-12 col-md-6 mx-auto mb-4"><i class="icon-user-plus"></i><input type="submit" id="logout" value="Zarejestruj się!"></label>
                             </form>
                         </div>

@@ -28,14 +28,18 @@ try
     $haslo=$_POST['haslo'];
     
    // echo"It works!";
+        
+    //echo $email.'<br />';
+    //echo $haslo.'<br />';
     
     $email = htmlentities($email,ENT_QUOTES,'UTF-8');
-        
+    echo $email.'<br />';    
+    
     if($rezultat = @$polaczenie->query(
         sprintf("SELECT * FROM uzytkownicy WHERE email='%s'", mysqli_real_escape_string($polaczenie,$email))))
-    
     {
         $ilu_userow= $rezultat->num_rows;
+        //echo $ilu_userow.'<br />';
         if($ilu_userow > 0)
         {
            $wiersz = $rezultat->fetch_assoc();
@@ -51,29 +55,34 @@ try
             
                 unset($_SESSION['blad']);
                 $rezultat->close();
-                //echo $user;
                 header('Location:userMenu.php');
-            }
-            
+            }            
             else
             {
                         
-                $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-				header('Location: signIn.php');
+              $_SESSION['blad'] = '<span style="color:red">Nieprawidłowe hasło!</span>';
+              header('Location:signIn.php');
             
             }
         }
         else
+            {
+                        
+              $_SESSION['blad'] = '<span style="color:red">Brak użytkownika o podanym emailu!</span>';
+              header('Location:signIn.php');
+            
+            }
+    }
+    else
         {
                         
            throw new Exception($polaczenie->error);
             
         }
-    }
-    
+        
     $polaczenie->close();
 
-} 
+    } 
     
 }
 

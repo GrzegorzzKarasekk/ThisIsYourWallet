@@ -66,8 +66,12 @@
                 <div class="row mb-4">
                     <div class="col-sm-12 mx-auto my-auto">
                         <div class="tile col-12 mx-auto my-auto">
-                            <h2 class="h3 font-weight-bold my-3 text-uppercase">Możesz już zalogować się na swoje konto!</h2>
-                            <a href="index.php"></a>
+                            <h2 class="h3 font-weight-bold my-3 text-uppercase">Możesz już zalogować się na swoje konto!
+                            </h2>
+                            <div class="wrapper1" onclick="window.location.href='zaloguj-sie'">
+                                <i class="icon-login"></i>
+                                <input type="button" id="login" value="Zaloguj się!">
+                            </div>
                         </div>
                     </div>
                 </div>
