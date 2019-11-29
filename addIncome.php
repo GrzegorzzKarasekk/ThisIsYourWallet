@@ -1,3 +1,106 @@
+<?php
+
+	session_start();
+	
+    if(!isset($_SESSION['zalogowany']))
+    {
+    header('Location:index.php');
+    exit();
+    }
+    
+    $dataczas = new DateTime();
+    $datadomyslna = $dataczas->format('Y-m-d');
+
+    if (isset($_POST['kwota']))
+	{
+	 
+        $wszystko_OK=true;
+        
+		$kwota = $_POST['kwota'];
+        if($kwota == 0)
+        {
+          $wszystko_OK=false;
+		  $_SESSION['e_kwota']="Kwota nie może być równa zero!";  
+        }
+		        
+		$dzien = $_POST['dzien'];
+		//pobranie daty z serwera
+        $dataczas = new DateTime();
+        $datadomyslna = $dataczas->format('Y-m-d');
+        
+        
+        if($dzien > $datadomyslna)
+        {
+            $wszystko_OK=false;
+			$_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
+        }
+        
+        $wartosc_kategorii = $_POST['kategoria'];
+        
+        switch( $wartosc_kategorii )
+        {
+            case 1:
+            $kategoria = "Wynagrodzenie";
+            break;
+   
+            case 2:
+            $kategoria = "Odsetki";
+            break;
+   
+            case 3:
+            $kategoria = "Sprzedaż na allegro";
+            break;
+                
+            case 4:
+            $kategoria = "Inne";
+            break;
+                
+        }
+                
+        
+        $komentarz = $_POST['komentarz'];
+        
+        require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+		
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+				//Pobierz id użytkownika
+                //echo $_SESSION['id'];
+                $id_uzytkownika = $_SESSION['id'];
+                if (!$_SESSION['id']) throw new Exception($polaczenie->error);
+				if ($wszystko_OK==true)
+				{
+                    if ($polaczenie->query("INSERT INTO przychody VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien', '$kategoria', '$komentarz')"))
+				    {
+                    $_SESSION['dochod_Dodany']="Dochod został dodany!";
+                    }
+				    else
+				    {
+					throw new Exception($polaczenie->error);
+				    }
+                }
+            }
+				
+				$polaczenie->close();
+        }
+			
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			//echo '<br />Informacja developerska: '.$e;
+		}
+		
+	}
+	
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -61,7 +164,8 @@
                 <li role="separator" class="divider"></li>
                 <div class="dropdown-divider"></div>
 
-                <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Wyloguj</a></li>
+                <li class="nav-item mx-4"><a href="logout.php">Wyloguj się</a></li>
+
 
                 <li role="separator" class="divider"></li>
 
@@ -72,6 +176,22 @@
     </nav>
 
     <main>
+
+        <!-- Botstrap o poinformowaniu dodania dochodu -->
+        <div class="modal" tabindex="-1" id="infoModal" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p style="color:black; font-size:15px; text-align: center;"><?php echo $_SESSION['dochod_Dodany'] ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='dodaj-przychod'">Dodaj nowy dochód </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='menu-uzytkownika'">Wróć do menu użytkownika</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <article class="walletspage">
             <div class="container">
                 <header>
@@ -80,20 +200,33 @@
                 <div class="quotation text-justify mb-4" style="font-size:20px">
                     <q>Oszczędność jest to umiejętność unikania zbędnych wydatków</q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">Seneka Młodszy</span>
                 </div>
+
                 <div class="row mb-4">
                     <div class="col-sm-12 mx-auto my-auto">
                         <div class="tile col-12 mx-auto my-auto">
                             <h2 class="h3 font-weight-bold my-3 text-uppercase">Wprowadź dane:</h2>
 
-                            <form action="userMenu.php" method="post">
+                            <form method="post">
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
-                                    <label for="income"> Kwota:</label> <label><input type="number" name="income" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" required></label>
+                                    <label for="income"> Kwota:</label> <label><input type="number" name="kwota" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" required></label>
                                 </div>
-
+                                <?php
+                                    if(isset($_SESSION['e_kwota']))
+                                    {
+                                       echo'<span style="color:red; font-size:75%;"> '.$_SESSION['e_kwota'].'</span>';
+                                       unset($_SESSION['e_kwota']);
+                                    }
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
-                                    <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" min="2000-01-01" required></label>
+                                    <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" min="2000-01-01" value="<?php echo $datadomyslna ?>" required></label>
                                 </div>
-
+                                <?php
+                                    if(isset($_SESSION['e_date']))
+                                    {
+                                       echo'<span style="color:red; font-size:75%;"> '.$_SESSION['e_date'].'</span>';
+                                       unset($_SESSION['e_date']);
+                                    }
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <fieldset>
 
@@ -109,7 +242,7 @@
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
                                     <br />
-                                    <textarea name="komentarz" id="komentarz" rows="4" cols="25" maxlength="100" minlength="10"></textarea>
+                                    <textarea name="komentarz" id="komentarz" rows="4" cols="25" maxlength="100" minlength="5"></textarea>
                                 </div>
 
 
@@ -135,6 +268,26 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <?php
+          if(isset($_SESSION['dochod_Dodany']))
+            {
+              //potwierdzenie dodania dochodu 
+              echo '<script>
+                $(document).ready(function()
+                {
+                    $("#infoModal").modal();
+                });
+              </script>';
+            }
+    ?>
+    <?php
+     //Usuwanie zmiennych pamiętających wartości wpisane do formularza
+    if(isset($_SESSION['dochod_Dodany'])) unset($_SESSION['dochod_Dodany']);
+    if(isset($kwota)) unset($kwota);
+    if(isset($dzien)) unset($dzien);
+    if(isset($kategoria)) unset($kategoria);
+    if(isset($komentarz)) unset($komentarz);        
+    ?>
 </body>
 
 </html>

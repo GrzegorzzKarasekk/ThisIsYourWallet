@@ -181,7 +181,7 @@
                                 <?php
                                     if(isset($_SESSION['e_imie']))
                                     {
-                                       echo'<div class="error"> '.$_SESSION['e_imie'].'</div>';
+                                       echo'<div style="color: red !important; font-size: 75% !important; text-align: left !important;"> '.$_SESSION['e_imie'].'</div>';
                                        unset($_SESSION['e_imie']);
                                     }
                                 ?>
@@ -192,7 +192,7 @@
                                 <?php
                                     if(isset($_SESSION['e_email']))
                                     {
-                                       echo'<div class="error"> '.$_SESSION['e_email'].'</div>';
+                                       echo'<div style="color: red !important; font-size: 75% !important; text-align: left !important;">'.$_SESSION['e_email'].'</div>';
                                        unset($_SESSION['e_email']);
                                     }
                                 ?>
@@ -203,7 +203,7 @@
                                 <?php
                                     if(isset($_SESSION['e_haslo']))
                                     {
-                                        echo'<div class="error"> '.$_SESSION['e_haslo'].'</div>';
+                                        echo'<div style="color: red !important; font-size: 75% !important; text-align: left !important;">'.$_SESSION['e_haslo'].'</div>';
                                         unset($_SESSION['e_haslo']);
                                     }
                                 ?>
@@ -214,7 +214,7 @@
                                 <?php
                                     if(isset($_SESSION['e_haslo']))
                                     {
-                                       echo'<div class="error"> '.$_SESSION['e_haslo'].'</div>';
+                                       echo'<div style="color: red !important; font-size: 75% !important; text-align: left !important;">'.$_SESSION['e_haslo'].'</div>';
                                        unset($_SESSION['e_haslo']);
                                     }
                                 ?>
@@ -226,7 +226,7 @@
                                 <?php
                                     if(isset($_SESSION['e_bot']))
                                     {
-                                        echo'<div class="error">'.$_SESSION['e_bot'].'</div>';
+                                        echo'<div style="color: red !important; font-size: 75% !important; text-align: left !important;">'.$_SESSION['e_bot'].'</div>';
                                         unset($_SESSION['e_bot']);
                                     }
                                 ?>

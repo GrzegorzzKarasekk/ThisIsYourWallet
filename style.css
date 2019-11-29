@@ -131,11 +131,11 @@ h2 {
     text-align: left;
 }
 
-.error{
+/*.wrapperForm > .error{
     color: red !important;
     font-size: 75% !important;
-    text-align: left;
-}
+    text-align: left !important;
+}*/
 
 .wrapperForm > label {
     margin-top: 5px;
@@ -485,6 +485,8 @@ td {
     background-color: #BF1919;
     cursor: pointer;
 }
+
+
 
 @media (max-width: 991px) {
     table {
