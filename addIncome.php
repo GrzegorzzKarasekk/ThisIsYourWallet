@@ -80,7 +80,7 @@
 				{
                     if ($polaczenie->query("INSERT INTO przychody VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien', '$kategoria', '$komentarz')"))
 				    {
-                    $_SESSION['dochod_Dodany']="Dochod został dodany!";
+                    $_SESSION['dochod_Dodany']="Przychód został dodany!";
                     }
 				    else
 				    {
@@ -185,7 +185,7 @@
                         <p style="color:black; font-size:15px; text-align: center;"><?php echo $_SESSION['dochod_Dodany'] ?></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='dodaj-przychod'">Dodaj nowy dochód </button>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='dodaj-przychod'">Dodaj nowy przychód </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='menu-uzytkownika'">Wróć do menu użytkownika</button>
                     </div>
                 </div>

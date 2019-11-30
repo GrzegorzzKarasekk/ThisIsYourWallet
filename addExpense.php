@@ -1,3 +1,172 @@
+<?php
+
+	session_start();
+	
+    if(!isset($_SESSION['zalogowany']))
+    {
+    header('Location:index.php');
+    exit();
+    }
+    
+    $dataczas = new DateTime();
+    $datadomyslna = $dataczas->format('Y-m-d');
+
+    if (isset($_POST['kwota']))
+	{
+	 
+        $wszystko_OK=true;
+        
+		$kwota = $_POST['kwota'];
+        if($kwota == 0)
+        {
+          $wszystko_OK=false;
+		  $_SESSION['e_kwota']="Kwota nie może być równa zero!";  
+        }
+		        
+		$dzien = $_POST['dzien'];
+		//pobranie daty z serwera
+        $dataczas = new DateTime();
+        $datadomyslna = $dataczas->format('Y-m-d');
+        
+        
+        if($dzien > $datadomyslna)
+        {
+            $wszystko_OK=false;
+			$_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
+        }
+        
+        $wartosc_platnosci = $_POST['platnosc'];
+        switch( $wartosc_platnosci )
+        {
+            case 'g':
+            $platnosc = "Gotówka";
+            break;
+   
+            case 'd':
+            $platnosc = "Karta debetowa";
+            break;
+   
+            case 'k':
+            $platnosc = "Karta kredytowa";
+            break;                
+        }
+        
+        $wartosc_kategorii = $_POST['kategoria'];
+        
+        switch( $wartosc_kategorii )
+        {
+            case 1:
+            $kategoria = "Jedzenie";
+            break;
+   
+            case 2:
+            $kategoria = "Mieszkanie";
+            break;
+   
+            case 3:
+            $kategoria = "Transport";
+            break;
+                
+            case 4:
+            $kategoria = "Telekomunikacja";
+            break;  
+                
+            case 5:
+            $kategoria = "Opieka zdrowotna";
+            break;
+                
+            case 6:
+            $kategoria = "Ubrania";
+            break;
+                
+            case 7:
+            $kategoria = "Higiena";
+            break;
+                
+            case 8:
+            $kategoria = "Dzieci";
+            break;
+                
+            case 9:
+            $kategoria = "Rozrywka";
+            break;
+                
+            case 10:
+            $kategoria = "Wycieczka";
+            break;
+                
+            case 11:
+            $kategoria = "Szkolenia";
+            break;
+                
+            case 12:
+            $kategoria = "Książki";
+            break;
+                
+            case 13:
+            $kategoria = "Oszczędności";
+            break;
+                
+            case 14:
+            $kategoria = "Na złotą jesień, czyli emeryturę";
+            break;
+                
+            case 15:
+            $kategoria = "Spłata długów";
+            break;
+                
+            case 16:
+            $kategoria = "Darowizna";
+            break;
+                
+            case 17:
+            $kategoria = "Inne wydatki";
+            break;
+                
+        }
+                
+        
+        $komentarz = $_POST['komentarz'];
+        
+        require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+		
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+                $id_uzytkownika = $_SESSION['id'];
+                if (!$_SESSION['id']) throw new Exception($polaczenie->error);
+				if ($wszystko_OK==true)
+				{
+                    if ($polaczenie->query("INSERT INTO wydatki VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien','$platnosc', '$kategoria', '$komentarz')"))
+				    {
+                    $_SESSION['dochod_Dodany']="Wydatek został dodany!";
+                    }
+				    else
+				    {
+					throw new Exception($polaczenie->error);
+				    }
+                }
+            }
+				
+				$polaczenie->close();
+        }
+			
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			//echo '<br />Informacja developerska: '.$e;
+		}
+		
+	}
+	
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -72,6 +241,21 @@
     </nav>
 
     <main>
+       <!-- Botstrap o poinformowaniu dodania dochodu -->
+        <div class="modal" tabindex="-1" id="infoModal" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p style="color:black; font-size:15px; text-align: center;"><?php echo $_SESSION['dochod_Dodany'] ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='dodaj-wyatek'">Dodaj nowy wydatek </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='menu-uzytkownika'">Wróć do menu użytkownika</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
         <article class="walletspage">
             <div class="container">
                 <header>
@@ -85,15 +269,27 @@
                         <div class="tile col-12 mx-auto my-auto">
                             <h2 class="h3 font-weight-bold my-3 text-uppercase">Wprowadź dane:</h2>
 
-                            <form action="userMenu.php" method="post">
+                            <form method="post">
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
-                                    <label for="income"> Kwota:</label> <label><input type="number" name="expense" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00" required></label>
+                                    <label for="income"> Kwota:</label> <label><input type="number" name="kwota" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00" required></label>
                                 </div>
-
+                                <?php
+                                    if(isset($_SESSION['e_kwota']))
+                                    {
+                                       echo'<span style="color:red; font-size:75%;"> '.$_SESSION['e_kwota'].'</span>';
+                                       unset($_SESSION['e_kwota']);
+                                    }
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
-                                    <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" min="2000-01-01" required></label>
+                                    <label for="date"> Data:</label> <label><input type="date" id="datePicker" name="dzien" value="<?php echo $datadomyslna ?>" min="2000-01-01" required></label>
                                 </div>
-
+                                <?php
+                                    if(isset($_SESSION['e_date']))
+                                    {
+                                       echo'<span style="color:red; font-size:75%;"> '.$_SESSION['e_date'].'</span>';
+                                       unset($_SESSION['e_date']);
+                                    }
+                                ?>
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <fieldset>
                                         <legend> Sposób płatności: </legend>
@@ -133,7 +329,7 @@
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
                                     <br />
-                                    <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320" minlength="10"></textarea>
+                                    <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320" minlength="5"></textarea>
                                 </div>
 
 
@@ -159,4 +355,26 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-</body></html>
+     <?php
+          if(isset($_SESSION['dochod_Dodany']))
+            {
+              //potwierdzenie dodania dochodu 
+              echo '<script>
+                $(document).ready(function()
+                {
+                    $("#infoModal").modal();
+                });
+              </script>';
+            }
+    ?>
+    <?php
+     //Usuwanie zmiennych pamiętających wartości wpisane do formularza
+    if(isset($_SESSION['dochod_Dodany'])) unset($_SESSION['dochod_Dodany']);
+    if(isset($kwota)) unset($kwota);
+    if(isset($dzien)) unset($dzien);
+    if(isset($platnosc)) unset($platnosc);
+    if(isset($kategoria)) unset($kategoria);
+    if(isset($komentarz)) unset($komentarz);        
+    ?>
+</body>
+</html>
