@@ -50,6 +50,7 @@
             chart.render();
 
         }
+
     </script>
     <!--
     dataPoints: [{
@@ -145,23 +146,23 @@
                 <li class="nav-item mx-4"><a href="menu-uzytkownika">Menu użytkownika</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+
 
                 <li class="nav-item mx-4"><a href="dodaj-przychod">Dodaj przychód</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+
 
                 <li class="nav-item mx-4"><a href="dodaj-wydatek">Dodaj wydatek</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+
 
 
                 <li class="nav-item mx-4"><a href="zmien-ustawienia">Ustawienia</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+
 
                 <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Wyloguj</a></li>
 
@@ -170,22 +171,25 @@
             </ul>
         </div>
 
-        <li class="navbar nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="przegladaj-bilans" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"><span><i class="icon-calendar"></i></span>Wybierz okres dat</a>
+        <ol class="navbar nav-item dropdown">
+            <li>
+                <a class="nav-link dropdown-toggle" href="przegladaj-bilans" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"><span><i class="icon-calendar"></i></span>Wybierz okres dat</a>
 
-            <div class="dropdown-menu" aria-lebelladby="submenu">
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"> Bieżący miesiąc</a>
-                <div class="dropdown-divider"></div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Bieżący miesiąc</a>
+                    <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="#"> Poprzedni miesiąc</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"> Poprzedni rok</a>
-                <div class="dropdown-divider"></div>
-                <a class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#niestandardowyModal" href="#"> Niestandardowy</a>
-                <div class="dropdown-divider"></div>
-            </div>
-        </li>
+                    <a class="dropdown-item" href="#"> Poprzedni miesiąc</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Poprzedni rok</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#niestandardowyModal" href="#"> Niestandardowy</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+
+            </li>
+        </ol>
     </nav>
 
     <main>
@@ -201,9 +205,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
-                            <label for="date"> Od:</label> <label class="d-inline-block"><input type="date" id="datePicker" name="dzien" min="2000-01-01" required></label>
-                            <label for="date"> Do:</label> <label class="d-inline-block"><input type="date" id="datePicker" name="dzien2" min="2000-01-01" required></label>
+                        <form action="showTheBalance.php" method="post">
+                            <label for="dateF"> Od:</label> <label class="d-inline-block"><input type="date" id="dateF" name="dzien" min="2000-01-01" required></label>
+                            <label for="dateL"> Do:</label> <label class="d-inline-block"><input type="date" id="dateL" name="dzien2" min="2000-01-01" required></label>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
@@ -228,11 +232,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
-                            <label for="date" style="font-weight: 700;"> Data:</label><label><input type="date" id="datePicker" name="dzien" min="2000-01-01"></label>
+                        <form action="showTheBalance.php" method="post">
+                            <label for="date" style="font-weight: 700;"> Data:</label><label><input type="date" id="date" name="dzien" min="2000-01-01"></label>
                             <br />
 
-                            <label for="income" style="font-weight: 700;"> Kwota:</label> <label><input type="number" name="income" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00"></label>
+                            <label for="income" style="font-weight: 700;"> Kwota:</label> <label><input type="number" id="income" name="income" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00"></label>
 
                             <fieldset>
                                 <label for="kategoria" style="font-weight: 700;"> Kategoria:</label>
@@ -269,21 +273,21 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
-                            <label for="date" style="font-weight: 700;"> Data:</label><label><input type="date" id="datePicker" name="dzien" min="2000-01-01"></label>
+                        <form action="showTheBalance.php" method="post">
+                            <label for="dateE" style="font-weight: 700;"> Data:</label><label><input type="date" id="dateE" name="dzien" min="2000-01-01"></label>
                             <br />
 
-                            <label for="expense" style="font-weight: 700;"> Kwota:</label> <label><input type="number" name="expense" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00"></label>
+                            <label for="expense" style="font-weight: 700;"> Kwota:</label> <label><input type="number" id="expense" name="expense" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00"></label>
 
                             <fieldset>
-                                <label for="platnosc" style="font-weight: 700;">Sposób płatności: </label>
+                                <label style="font-weight: 700;">Sposób płatności: </label>
                                 <div><label><input type="radio" value="g" name="platnosc" checked>Gotówka</label></div>
                                 <div><label><input type="radio" value="d" name="platnosc">Karta debetowa</label></div>
                                 <div><label><input type="radio" value="k" name="platnosc">Karta kredytowa</label></div>
 
                             </fieldset>
 
-                            <lebel for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</lebel>
+                            <label for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</label>
                             <br />
                             <select id="kategoria" name="kategoria" style="width:100%;">
 
@@ -306,9 +310,9 @@
                                 <option value="17">Inne wydatki</option>
                             </select>
 
-                            <label for="komentarz" class="relative" style="font-weight: 700;"> Komentarz (opcjonalnie): </label>
+                            <label for="komentarzE" class="relative" style="font-weight: 700;"> Komentarz (opcjonalnie): </label>
                             <br />
-                            <textarea name="komentarz" id="komentarz" rows="4" cols="25" maxlength="100" minlength="10"></textarea>
+                            <textarea name="komentarz" id="komentarzE" rows="4" cols="25" maxlength="100" minlength="10"></textarea>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
@@ -344,9 +348,8 @@
         <article class="walletspage">
             <div class="container">
                 <header class="dateBalance">
-                    <h1 class="font-weight-bold text-uppercase mb-2">Bilans za bieżący miesiąc<br />
-                        <h2>Od 01-10-2019 do 31-10-2019</h2>
-                    </h1>
+                    <h1 class="font-weight-bold text-uppercase mb-2">Bilans za bieżący miesiąc</h1>
+                    <div class="textIn">Od 01-10-2019 do 31-10-2019</div>
                 </header>
                 <div class="quotation text-justify mb-4" style="font-size:20px">
                     <q>Zrobić budżet to wskazać swoim pieniądzom, dokąd mają iść, zamiast się zastanawiać, gdzie się rozeszły</q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">John C. Maxwell</span>
@@ -477,4 +480,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-</body></html>
+</body>
+
+</html>

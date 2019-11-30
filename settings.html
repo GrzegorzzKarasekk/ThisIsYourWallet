@@ -39,27 +39,27 @@
                 <li class="nav-item mx-4"><a href="menu-uzytkownika">Menu uzytkownika</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+                
 
                 <li class="nav-item mx-4"><a href="dodaj-przychod">Dodaj przychód</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+                
 
                 <li class="nav-item mx-4"><a href="dodaj-wydatek">Dodaj wydatek</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+                
 
                 <li class="nav-item mx-4"><a href="przegladaj-bilans">Przeglądaj bilans</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+                
 
                 <li class="nav-item mx-4"><a href="zmien-ustawienia">Ustawienia</a></li>
 
                 <li role="separator" class="divider"></li>
-                <div class="dropdown-divider"></div>
+                
 
                 <li class="nav-item mx-4"><a href="zarzadzaj-swoim-budzetem">Wyloguj</a></li>
 
@@ -84,7 +84,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
                             <label><input type="text" name="kategoria" placeholder="Nowa kategoria" required></label>
 
                             <div class="modal-footer">
@@ -109,7 +109,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
                             <label><input type="text" name="kategoria" placeholder="Nowa kategoria" required></label>
 
                             <div class="modal-footer">
@@ -134,7 +134,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
                             <label><input type="text" name="kategoria" placeholder="Nowy sposób płatności" required></label>
 
                             <div class="modal-footer">
@@ -160,7 +160,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
                             <fieldset>
                                 <label for="kategoria" style="font-weight: 700;"> Kategoria:</label>
@@ -195,7 +195,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
                             <fieldset>
                                 <label for="kategoria" style="font-weight: 700;"> Kategoria:</label>
@@ -243,10 +243,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
                             <fieldset>
-                                <label for="platnosc" style="font-weight: 700;">Sposób płatności: </label>
+                                <label style="font-weight: 700;">Sposób płatności: </label>
                                 <div><label><input type="radio" value="g" name="platnosc" checked>Gotówka</label></div>
                                 <div><label><input type="radio" value="d" name="platnosc">Karta debetowa</label></div>
                                 <div><label><input type="radio" value="k" name="platnosc">Karta kredytowa</label></div>
@@ -279,9 +279,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
-                            <lebel for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</lebel>
+                            <label for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</label>
                             <br />
                             <select id="kategoria" name="kategoria" style="width:100%;">
 
@@ -314,11 +314,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
-                            <lebel for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</lebel>
+                            <label for="kategoriadE" style="font-weight: 700;"> Kategoria transakcji:</label>
                             <br />
-                            <select id="kategoria" name="kategoria" style="width:100%;">
+                            <select id="kategoriadE" name="kategoria" style="width:100%;">
 
                                 <option value="1">Jedzenie</option>
                                 <option value="2">Mieszkanie</option>
@@ -361,11 +361,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
-                            <lebel for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</lebel>
+                            <label for="kategoriadP" style="font-weight: 700;"> Kategoria transakcji:</label>
                             <br />
-                            <select id="kategoria" name="kategoria" style="width:100%;">
+                            <select id="kategoriadP" name="kategoria" style="width:100%;">
 
                                 <option value="1">Gotówka</option>
                                 <option value="2">Karta debetowa</option>
@@ -396,7 +396,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form action="settings.php" method="post">
 
                             <label style="font-weight: 700;"><i class="icon-user"></i><input type="text" name="imie" placeholder="Zmień imię"></label>
 
