@@ -35,28 +35,28 @@
 			$_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
         }
         
-        $wartosc_kategorii = $_POST['kategoria'];
-        
-        switch( $wartosc_kategorii )
+        $dostępne_kategorie_przychodu = $_POST['kategoria'];
+        /*
+        switch( $dostępne_kategorie_przychodu )
         {
             case 1:
-            $kategoria = "Wynagrodzenie";
+            kategoria_przychodu = "Wynagrodzenie";
             break;
    
             case 2:
-            $kategoria = "Odsetki";
+            kategoria_przychodu = "Odsetki";
             break;
    
             case 3:
-            $kategoria = "Sprzedaż na allegro";
+            kategoria_przychodu = "Sprzedaż na allegro";
             break;
                 
             case 4:
-            $kategoria = "Inne";
+            kategoria_przychodu = "Inne";
             break;
                 
         }
-                
+          */      
         
         $komentarz = $_POST['komentarz'];
         
@@ -78,7 +78,7 @@
                 if (!$_SESSION['id']) throw new Exception($polaczenie->error);
 				if ($wszystko_OK==true)
 				{
-                    if ($polaczenie->query("INSERT INTO przychody VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien', '$kategoria', '$komentarz')"))
+                    if ($polaczenie->query("INSERT INTO przychody VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien', '$kategoria_przychodu', '$komentarz')"))
 				    {
                     $_SESSION['dochod_Dodany']="Przychód został dodany!";
                     }
@@ -285,7 +285,7 @@
     if(isset($_SESSION['dochod_Dodany'])) unset($_SESSION['dochod_Dodany']);
     if(isset($kwota)) unset($kwota);
     if(isset($dzien)) unset($dzien);
-    if(isset($kategoria)) unset($kategoria);
+    if(isset(kategoria_przychodu)) unset(kategoria_przychodu);
     if(isset($komentarz)) unset($komentarz);        
     ?>
 </body>

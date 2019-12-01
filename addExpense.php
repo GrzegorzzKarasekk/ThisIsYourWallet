@@ -35,95 +35,86 @@
 			$_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
         }
         
-        $wartosc_platnosci = $_POST['platnosc'];
-        switch( $wartosc_platnosci )
-        {
-            case 'g':
-            $platnosc = "Gotówka";
-            break;
-   
-            case 'd':
-            $platnosc = "Karta debetowa";
-            break;
-   
-            case 'k':
-            $platnosc = "Karta kredytowa";
-            break;                
-        }
+        $id_platnosci = $_POST['platnosc'];
+        /*switch( $id_platnosci )
+        Wyciągnąć nazwę
+        $platnosc 
         
-        $wartosc_kategorii = $_POST['kategoria'];
+        */
         
-        switch( $wartosc_kategorii )
+        $dostępne_kategorie_wydatku = $_POST['kategoria'];
+        
+        /*switch( $dostępne_kategorie_wydatku )
         {
             case 1:
-            $kategoria = "Jedzenie";
+            $kategoria_wydatku = "Jedzenie";
             break;
    
             case 2:
-            $kategoria = "Mieszkanie";
+            $kategoria_wydatku = "Mieszkanie";
             break;
    
             case 3:
-            $kategoria = "Transport";
+            $kategoria_wydatku = "Transport";
             break;
                 
             case 4:
-            $kategoria = "Telekomunikacja";
+            $kategoria_wydatku = "Telekomunikacja";
             break;  
                 
             case 5:
-            $kategoria = "Opieka zdrowotna";
+            $kategoria_wydatku = "Opieka zdrowotna";
             break;
                 
             case 6:
-            $kategoria = "Ubrania";
+            $kategoria_wydatku = "Ubrania";
             break;
                 
             case 7:
-            $kategoria = "Higiena";
+            $kategoria_wydatku = "Higiena";
             break;
                 
             case 8:
-            $kategoria = "Dzieci";
+            $kategoria_wydatku = "Dzieci";
             break;
                 
             case 9:
-            $kategoria = "Rozrywka";
+            $kategoria_wydatku = "Rozrywka";
             break;
                 
             case 10:
-            $kategoria = "Wycieczka";
+            $kategoria_wydatku = "Wycieczka";
             break;
                 
             case 11:
-            $kategoria = "Szkolenia";
+            $kategoria_wydatku = "Szkolenia";
             break;
                 
             case 12:
-            $kategoria = "Książki";
+            $kategoria_wydatku = "Książki";
             break;
                 
             case 13:
-            $kategoria = "Oszczędności";
+            $kategoria_wydatku = "Oszczędności";
             break;
                 
             case 14:
-            $kategoria = "Na złotą jesień, czyli emeryturę";
+            $kategoria_wydatku = "Na złotą jesień, czyli emeryturę";
             break;
                 
             case 15:
-            $kategoria = "Spłata długów";
+            $kategoria_wydatku = "Spłata długów";
             break;
                 
             case 16:
-            $kategoria = "Darowizna";
+            $kategoria_wydatku = "Darowizna";
             break;
                 
             case 17:
-            $kategoria = "Inne wydatki";
+            $kategoria_wydatku = "Inne wydatki";
             break;
                 
-        }
+        }*/
                 
         
         $komentarz = $_POST['komentarz'];
@@ -144,7 +135,7 @@
                 if (!$_SESSION['id']) throw new Exception($polaczenie->error);
 				if ($wszystko_OK==true)
 				{
-                    if ($polaczenie->query("INSERT INTO wydatki VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien','$platnosc', '$kategoria', '$komentarz')"))
+                    if ($polaczenie->query("INSERT INTO wydatki VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien','$platnosc', '$kategoria_wydatku', '$komentarz')"))
 				    {
                     $_SESSION['dochod_Dodany']="Wydatek został dodany!";
                     }
@@ -373,7 +364,7 @@
     if(isset($kwota)) unset($kwota);
     if(isset($dzien)) unset($dzien);
     if(isset($platnosc)) unset($platnosc);
-    if(isset($kategoria)) unset($kategoria);
+    if(isset($kategoria_wydatku)) unset($kategoria_wydatku);
     if(isset($komentarz)) unset($komentarz);        
     ?>
 </body>
