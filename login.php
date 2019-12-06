@@ -16,7 +16,10 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 try
 {
     $polaczenie= new mysqli($host, $db_user, $db_password, $db_name);
-    
+    //Ogonki
+            mysqli_query($polaczenie, "SET CHARSET utf8");
+            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+    //
     if ($polaczenie->connect_errno!=0)
     {
         throw new Exception(mysqli_connect_errno());
@@ -37,6 +40,7 @@ try
     
     if($rezultat = @$polaczenie->query(
         sprintf("SELECT * FROM uzytkownicy WHERE email='%s'", mysqli_real_escape_string($polaczenie,$email))))
+        
     {
         $ilu_userow= $rezultat->num_rows;
         //echo $ilu_userow.'<br />';
@@ -48,9 +52,9 @@ try
             {
                 $_SESSION['zalogowany']=true;
             
-                $_SESSION['id']=$wiersz['id'];
+                $_SESSION['id_uzytkownika']=$wiersz['id_uzytkownika'];
             
-                $_SESSION['imie']= $wiersz['imie'];    
+                $_SESSION['imie_uzytkownika']= $wiersz['imie_uzytkownika'];    
                 $_SESSION['email']= $wiersz['email'];   
             
                 unset($_SESSION['blad']);

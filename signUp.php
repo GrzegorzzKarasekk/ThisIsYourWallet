@@ -1,17 +1,16 @@
 <?php
-
+    
 	session_start();
 	
 	if (isset($_POST['email']))
 	{
 		//Udana walidacja? Załóżmy, że tak!
 		$wszystko_OK=true;
-		
+        
 		//Sprawdź poprawność imienia
 		$imie = $_POST['imie'];
-		
-        //zmiana na duża literę
-        $imie = ucfirst($imie);
+		//zmiana pierwszej na duża literę Z konwersją polskich znaków
+        $imie=mb_convert_case($imie,MB_CASE_TITLE,"UTF-8");
         
 		//Sprawdzenie długości imienia
 		if ((strlen($imie)<3) || (strlen($imie)>20))
@@ -22,17 +21,16 @@
 		
         // konstrukcja wyrażenia regularnego
         // poprawność imienia oraz nazwiska
-        $sprawdz = '/^[A-ZŁŚ]{1}+[a-ząęółśżźćń]+$/';
-
+        $sprawdz = '/(*UTF8)^[A-ZŁŚŻŹ]{1}+[a-ząęółśżźćń]+$/';
         // ereg() sprawdza dopasowanie wzorca do ciągu
         // zwraca true jeżeli tekst pasuje do wyrażenia
-        if(preg_match($sprawdz, $imie)==false)
-		{
-			$wszystko_OK=false;
-			$_SESSION['e_imie']="Podano błędne imię";
-		}
-		
-		// Sprawdź poprawność adresu email
+        
+        if(preg_match($sprawdz, $imie)==false) 
+        {
+            $wszystko_OK=false;
+			$_SESSION['e_imie']="Podano błędne imię: ".$imie;
+        }
+        // Sprawdź poprawność adresu email
 		$email = $_POST['email'];
 		$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
 		
@@ -92,7 +90,11 @@
 			else
 			{
 				//Czy email już istnieje?
-				$rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE email='$email'");
+				$rezultat = $polaczenie->query("SELECT id_uzytkownika FROM uzytkownicy WHERE email='$email'");
+                //Ogonki
+                mysqli_query($polaczenie, "SET CHARSET utf8");
+                mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+                //
 				
 				if (!$rezultat) throw new Exception($polaczenie->error);
 				
@@ -107,9 +109,24 @@
 				{
 					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 					
-					if ($polaczenie->query("INSERT INTO uzytkownicy VALUES (NULL, '$imie', '$email', '$haslo_hash')"))
+					if ($polaczenie->query("INSERT INTO uzytkownicy(id_uzytkownika,imie_uzytkownika,email,haslo) VALUES (NULL, '$imie', '$email', '$haslo_hash')"))
 					{
-						$_SESSION['udanarejestracja']=true;
+                        $idOStatnioTworzonegoUzytkownika = $polaczenie->insert_id;
+                        //Przypisanie użytkownikowi domyślnych przychodów               
+                        $polaczenie->query("INSERT INTO przychody_przypisane_do_uzytkownika (nazwa_przychodu) SELECT nazwa_kategorii_przychodu FROM przychody_kategorie_podstawowe");
+                        $polaczenie->query("UPDATE przychody_przypisane_do_uzytkownika SET id_uzytkownika='$idOStatnioTworzonegoUzytkownika' WHERE id_uzytkownika = 0");
+
+                        //Przypisanie użytkownikowi domyślnych wydatków
+
+                        $polaczenie->query("INSERT INTO wydatki_przypisane_do_uzytkownika (nazwa_wydatku) SELECT nazwa_kategorii_wydatku FROM wydatki_kategorie_podstawowe");
+                        $polaczenie->query("UPDATE wydatki_przypisane_do_uzytkownika SET id_uzytkownika='$idOStatnioTworzonegoUzytkownika' WHERE id_uzytkownika = 0");
+
+                        //Przypisanie użytkownikowi domyślnych sposobów płatności
+
+                        $polaczenie->query("INSERT INTO sposoby_platnosci_przypisane_do_uzytkownika (nazwa_sposobu_platnosci) SELECT nazwa_sposobu_platnosci FROM sposoby_platnosci_podstawowe");
+                        $polaczenie->query("UPDATE sposoby_platnosci_przypisane_do_uzytkownika SET id_uzytkownika='$idOStatnioTworzonegoUzytkownika' WHERE id_uzytkownika = 0"); 
+
+                        $_SESSION['udanarejestracja']=true;
 						header('Location: hello.php');
 					}
 					else
@@ -136,7 +153,8 @@
 <html lang="pl">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <!--<meta charset="utf-8">-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Domowy Portfel</title>
     <meta name="description" content="Opanuj umiejętność zarządzania swoim budżetem. Przejmij kontrolę nad swoim portfelem. Sprawdź na czym możesz oszczędzić!">

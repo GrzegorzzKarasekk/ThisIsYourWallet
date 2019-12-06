@@ -58,7 +58,7 @@
     </nav>
 
     <main>
-        <article class="walletspage">
+            <article class="walletspage">
             <div class="container">
                 <header>
                     <h1 class="font-weight-bold text-uppercase mb-2">Dziękujemy za rejestrację w serwisie! </h1>

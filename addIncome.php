@@ -35,28 +35,7 @@
 			$_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
         }
         
-        $wartosc_kategorii = $_POST['kategoria'];
-        
-        switch( $wartosc_kategorii )
-        {
-            case 1:
-            $kategoria = "Wynagrodzenie";
-            break;
-   
-            case 2:
-            $kategoria = "Odsetki";
-            break;
-   
-            case 3:
-            $kategoria = "Sprzedaż na allegro";
-            break;
-                
-            case 4:
-            $kategoria = "Inne";
-            break;
-                
-        }
-                
+        $kategoria = $_POST['kategoria'];
         
         $komentarz = $_POST['komentarz'];
         
@@ -66,7 +45,11 @@
 		try 
 		{
 			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
+			 //Ogonki
+            mysqli_query($polaczenie, "SET CHARSET utf8");
+            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+            //
+            if ($polaczenie->connect_errno!=0)
 			{
 				throw new Exception(mysqli_connect_errno());
 			}
@@ -74,11 +57,11 @@
 			{
 				//Pobierz id użytkownika
                 //echo $_SESSION['id'];
-                $id_uzytkownika = $_SESSION['id'];
-                if (!$_SESSION['id']) throw new Exception($polaczenie->error);
+                $id_uzytkownika = $_SESSION['id_uzytkownika'];
+                if (!$_SESSION['id_uzytkownika']) throw new Exception($polaczenie->error);
 				if ($wszystko_OK==true)
 				{
-                    if ($polaczenie->query("INSERT INTO przychody VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien', '$kategoria', '$komentarz')"))
+                    if ($polaczenie->query("INSERT INTO przychody VALUES (NULL, $id_uzytkownika, '$kategoria', '$kwota', '$dzien',  '$komentarz')"))
 				    {
                     $_SESSION['dochod_Dodany']="Przychód został dodany!";
                     }
@@ -231,11 +214,49 @@
                                     <fieldset>
 
                                         <legend> Kategoria: </legend>
-                                        <div><label><input type="radio" value="1" name="kategoria" checked>Wynagrodzenie</label></div>
-                                        <div><label><input type="radio" value="2" name="kategoria">Odsetki bankowe</label></div>
-                                        <div><label><input type="radio" value="3" name="kategoria">Sprzedaż na allegro</label></div>
-                                        <div><label><input type="radio" value="4" name="kategoria">Inne</label></div>
+                                       
+                                       <?php 
+                                        require_once "connect.php";
+                                        mysqli_report(MYSQLI_REPORT_STRICT);
+                                                                                
+                                        try  
+                                        {
+                                            $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+                                            //Ogonki
+                                            mysqli_query($polaczenie, "SET CHARSET utf8");
+                                            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+                                            //
+                                            if ($polaczenie->connect_errno!=0)
+                                            {
+                                                throw new Exception(mysqli_connect_errno());
+                                            }
+                                            else
+                                            {
+                                                $rezultat = $polaczenie->query("SELECT *  FROM przychody_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
+                                                if ($rezultat->num_rows > 0)
+                                                {
+                                                    $wynik=$rezultat->fetch_assoc();
+                                                    echo "<div><label><input type='radio' value=".$wynik['id']." name='kategoria' checked>".$wynik['nazwa_przychodu']."</label></div>";
+                                                    
+                                                    while($wynik=$rezultat->fetch_assoc())
+                                                    {
+                                                    echo "<div><label><input type='radio' value=".$wynik['id']." name='kategoria'>".$wynik['nazwa_przychodu']."</label></div>";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                        throw new Exception($polaczenie->error);
+                                                }                                               
+                                            }
+                                            $polaczenie->close();
+                                        }
 
+                                        catch(Exception $e)
+                                        {
+                                        echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o dodanie przychodu w innym terminie!</span>';
+                                        //echo '<br />Informacja developerska: '.$e;
+                                        }
+                                        ?> 
                                     </fieldset>
                                 </div>
 

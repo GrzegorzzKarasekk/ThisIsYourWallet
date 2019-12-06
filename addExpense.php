@@ -35,96 +35,10 @@
 			$_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
         }
         
-        $wartosc_platnosci = $_POST['platnosc'];
-        switch( $wartosc_platnosci )
-        {
-            case 'g':
-            $platnosc = "Gotówka";
-            break;
-   
-            case 'd':
-            $platnosc = "Karta debetowa";
-            break;
-   
-            case 'k':
-            $platnosc = "Karta kredytowa";
-            break;                
-        }
+        $platnosc = $_POST['platnosc'];
         
-        $wartosc_kategorii = $_POST['kategoria'];
         
-        switch( $wartosc_kategorii )
-        {
-            case 1:
-            $kategoria = "Jedzenie";
-            break;
-   
-            case 2:
-            $kategoria = "Mieszkanie";
-            break;
-   
-            case 3:
-            $kategoria = "Transport";
-            break;
-                
-            case 4:
-            $kategoria = "Telekomunikacja";
-            break;  
-                
-            case 5:
-            $kategoria = "Opieka zdrowotna";
-            break;
-                
-            case 6:
-            $kategoria = "Ubrania";
-            break;
-                
-            case 7:
-            $kategoria = "Higiena";
-            break;
-                
-            case 8:
-            $kategoria = "Dzieci";
-            break;
-                
-            case 9:
-            $kategoria = "Rozrywka";
-            break;
-                
-            case 10:
-            $kategoria = "Wycieczka";
-            break;
-                
-            case 11:
-            $kategoria = "Szkolenia";
-            break;
-                
-            case 12:
-            $kategoria = "Książki";
-            break;
-                
-            case 13:
-            $kategoria = "Oszczędności";
-            break;
-                
-            case 14:
-            $kategoria = "Na złotą jesień, czyli emeryturę";
-            break;
-                
-            case 15:
-            $kategoria = "Spłata długów";
-            break;
-                
-            case 16:
-            $kategoria = "Darowizna";
-            break;
-                
-            case 17:
-            $kategoria = "Inne wydatki";
-            break;
-                
-        }
-                
+        $kategoria = $_POST['kategoria'];
         
         $komentarz = $_POST['komentarz'];
         
@@ -134,17 +48,22 @@
 		try 
 		{
 			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
+			 //Ogonki
+            mysqli_query($polaczenie, "SET CHARSET utf8");
+            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+            //
+            if ($polaczenie->connect_errno!=0)
 			{
 				throw new Exception(mysqli_connect_errno());
 			}
 			else
 			{
-                $id_uzytkownika = $_SESSION['id'];
-                if (!$_SESSION['id']) throw new Exception($polaczenie->error);
+                
+                $id_uzytkownika = $_SESSION['id_uzytkownika'];
+                if (!$_SESSION['id_uzytkownika']) throw new Exception($polaczenie->error);
 				if ($wszystko_OK==true)
 				{
-                    if ($polaczenie->query("INSERT INTO wydatki VALUES (NULL, $id_uzytkownika, '$kwota', '$dzien','$platnosc', '$kategoria', '$komentarz')"))
+                    if ($polaczenie->query("INSERT INTO wydatki VALUES (NULL, $id_uzytkownika, '$kategoria', '$platnosc', '$kwota', '$dzien', '$komentarz')"))
 				    {
                     $_SESSION['dochod_Dodany']="Wydatek został dodany!";
                     }
@@ -293,10 +212,49 @@
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <fieldset>
                                         <legend> Sposób płatności: </legend>
-                                        <div><label><input type="radio" value="g" name="platnosc" checked>Gotówka</label></div>
-                                        <div><label><input type="radio" value="d" name="platnosc">Karta debetowa</label></div>
-                                        <div><label><input type="radio" value="k" name="platnosc">Karta kredytowa</label></div>
+                                        <?php 
+                                        require_once "connect.php";
+                                        mysqli_report(MYSQLI_REPORT_STRICT);
+                                                                                
+                                        try 
+                                        {
+                                            $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+                                            //Ogonki
+                                            mysqli_query($polaczenie, "SET CHARSET utf8");
+                                            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+                                            //
+                                            if ($polaczenie->connect_errno!=0)
+                                            {
+                                                throw new Exception(mysqli_connect_errno());
+                                            }
+                                            else
+                                            {
+                                                $rezultat = $polaczenie->query("SELECT *  FROM sposoby_platnosci_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
+                                                if ($rezultat->num_rows > 0)
+                                                {
+                                                    $wynik=$rezultat->fetch_assoc();
+                                                    echo "<div><label><input type='radio' value=".$wynik['id']." name='platnosc' checked>".$wynik['nazwa_sposobu_platnosci']."</label></div>";
+                                                    
+                                                    while($wynik=$rezultat->fetch_assoc())
+                                                    {
+                                                    echo "<div><label><input type='radio' value=".$wynik['id']." name='platnosc'>".$wynik['nazwa_sposobu_platnosci']."</label></div>";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                        throw new Exception($polaczenie->error);
+                                                }                                               
+                                            }
+                                            $polaczenie->close();
+                                        }
 
+                                        catch(Exception $e)
+                                        {
+                                        echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o dodanie wydatku w innym terminie!</span>';
+                                        //echo '<br />Informacja developerska: '.$e;
+                                        }
+                                        ?>                                        
+                                        
                                     </fieldset>
                                 </div>
 
@@ -306,23 +264,52 @@
                                     <br />
                                     <select id="kategoria" name="kategoria" style="width:100%;">
 
-                                        <option value="1" selected>Jedzenie</option>
-                                        <option value="2">Mieszkanie</option>
-                                        <option value="3">Transport</option>
-                                        <option value="4">Telekomunikacja</option>
-                                        <option value="5">Opieka zdrowotna</option>
-                                        <option value="6">Ubrania</option>
-                                        <option value="7">Higiena</option>
-                                        <option value="8">Dzieci</option>
-                                        <option value="9">Rozrywka</option>
-                                        <option value="10">Wycieczka</option>
-                                        <option value="11">Szkolenia</option>
-                                        <option value="12">Książki</option>
-                                        <option value="13">Oszczędności</option>
-                                        <option value="14">Na złotą jesień, czyli emeryturę</option>
-                                        <option value="15">Spłata długów</option>
-                                        <option value="16">Darowizna</option>
-                                        <option value="17">Inne wydatki</option>
+                                       <?php
+                                        require_once "connect.php";
+                                        mysqli_report(MYSQLI_REPORT_STRICT);
+                                        
+                                        try 
+                                        {
+                                            $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+                                            //Ogonki
+                                            mysqli_query($polaczenie, "SET CHARSET utf8");
+                                            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+                                            //
+                                            
+                                            if ($polaczenie->connect_errno!=0)
+                                            {
+                                                throw new Exception(mysqli_connect_errno());
+                                            }
+                                            else
+                                            {
+                                                
+                                                $rezultat = $polaczenie->query("SELECT * FROM wydatki_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
+                                                if ($rezultat->num_rows > 0)
+                                                {
+                                                    $wynik=$rezultat->fetch_assoc();
+                                                    
+                                                    echo"<option value=".$wynik['id']." selected>".$wynik['nazwa_wydatku']."</option>";
+                                                    
+                                                    for($i=2; $i <= $rezultat->num_rows; $i++)
+                                                    {
+                                                        $wynik=$rezultat->fetch_assoc();
+                                                        echo"<option value=".$wynik['id'].">".$wynik['nazwa_wydatku']."</option>";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                        throw new Exception($polaczenie->error);
+                                                }                                               
+                                            }
+                                            $polaczenie->close();
+                                        }
+
+                                        catch(Exception $e)
+                                        {
+                                        echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o dodanie wydatku w innym terminie!</span>';
+                                        //echo '<br />Informacja developerska: '.$e;
+                                        }
+                                        ?>           
                                     </select>
                                 </div>
 
