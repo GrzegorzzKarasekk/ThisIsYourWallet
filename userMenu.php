@@ -86,7 +86,7 @@ if(!isset($_SESSION['zalogowany']))
             <div class="container">
                 <header>
                    <?php
-                    echo "<h1 class='font-weight-bold text-uppercase mb-2'>Witaj ".$_SESSION['imie']." :D</h1>";
+                    echo "<h1 class='font-weight-bold text-uppercase mb-2'>Witaj ".$_SESSION['imie_uzytkownika']." :D</h1>";
                     ?>
                     <div class="quotation text-justify mb-4" style="font-size:20px">
                         <q>Pieniądzom trzeba rozkazywać, a nie służyć </q><span class=" d-inline-block font-weight-bold text-right blockquote-footer" style="font-size:20px">Seneka</span>
