@@ -40,8 +40,8 @@
         else
         {
             
-            $sql="CREATE TABLE wynik_wydatkow_uzytkownika_za_okres ( id INT(11) NOT NULL AUTO_INCREMENT , id_kategorii_wydatku INT(11) NOT NULL , nazwa_kategorii VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , calkowita_kwota DECIMAL(10,2) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB";
-            $polaczenie->query($sql);
+//            $sql="CREATE TABLE wynik_wydatkow_uzytkownika_za_okres ( id INT(11) NOT NULL AUTO_INCREMENT , id_kategorii_wydatku INT(11) NOT NULL , nazwa_kategorii VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , calkowita_kwota DECIMAL(10,2) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB";
+//            $polaczenie->query($sql);
             
             
             $polaczenie->query("TRUNCATE TABLE wynik_wydatkow_uzytkownika_za_okres");
