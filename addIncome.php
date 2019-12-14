@@ -25,8 +25,8 @@
 		        
 		$dzien = $_POST['dzien'];
 		//pobranie daty z serwera
-        $dataczas = new DateTime();
-        $datadomyslna = $dataczas->format('Y-m-d');
+        //$dataczas = new DateTime();
+        //$datadomyslna = $dataczas->format('Y-m-d');
         
         
         if($dzien > $datadomyslna)
@@ -263,7 +263,7 @@
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
                                     <br />
-                                    <textarea name="komentarz" id="komentarz" rows="4" cols="25" maxlength="100" minlength="5"></textarea>
+                                    <textarea name="komentarz" id="komentarz" rows="4" cols="25" maxlength="100"></textarea>
                                 </div>
 
 

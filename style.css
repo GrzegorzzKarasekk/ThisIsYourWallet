@@ -296,6 +296,11 @@ nav a:hover {
     background-color: transparent;
     border: 0;
 }
+.textIn{
+    color: #384D93;
+    font-size: 20px;
+    font-weight: bold;
+}
 
 .wrapperAccept {
     box-shadow: inset 0px 1px 0px 0px #caefab;
@@ -368,6 +373,10 @@ nav a:hover {
     border-radius: 10px;
     padding: 5px;
 
+}
+
+.modalbody{
+    text-align: center;
 }
 
 .tileExpenses {
