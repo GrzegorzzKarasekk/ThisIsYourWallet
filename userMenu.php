@@ -70,7 +70,7 @@ if(!isset($_SESSION['zalogowany']))
                     <li role="separator" class="divider"></li>
                     <div class="dropdown-divider"></div>
                     
-                    <li class="nav-item mx-4"><a href="logout.php">Wyloguj się</a></li>
+                    <li class="nav-item mx-4"><a href="wyloguj">Wyloguj się</a></li>
 
               
                 </ul>
@@ -133,7 +133,7 @@ if(!isset($_SESSION['zalogowany']))
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 mx-auto my-auto" onclick="window.location.href='logout.php'">
+                    <div class="col-sm-6 mx-auto my-auto" onclick="window.location.href='wyloguj'">
                         <div class="tileMenu">
                             <div id="menuTile5">
                                 <i class="icon-logout display-inline-block"></i>

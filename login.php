@@ -4,7 +4,7 @@ session_start();//inicjalizacja sesji
 
 if((!isset($_POST['email'])) || (!isset($_POST['haslo'])))
 {
-    header('Location:signIn.php');
+    header('Location:zaloguj-sie');
     exit();
 }
     

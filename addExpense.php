@@ -25,8 +25,8 @@
 		        
 		$dzien = $_POST['dzien'];
 		//pobranie daty z serwera
-        $dataczas = new DateTime();
-        $datadomyslna = $dataczas->format('Y-m-d');
+        //$dataczas = new DateTime();
+        //$datadomyslna = $dataczas->format('Y-m-d');
         
         
         if($dzien > $datadomyslna)
@@ -168,7 +168,7 @@
                         <p style="color:black; font-size:15px; text-align: center;"><?php echo $_SESSION['dochod_Dodany'] ?></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='dodaj-wyatek'">Dodaj nowy wydatek </button>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='dodaj-wydatek'">Dodaj nowy wydatek </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='menu-uzytkownika'">Wróć do menu użytkownika</button>
                     </div>
                 </div>
@@ -282,12 +282,10 @@
                                             }
                                             else
                                             {
-                                                
                                                 $rezultat = $polaczenie->query("SELECT * FROM wydatki_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
                                                 if ($rezultat->num_rows > 0)
                                                 {
                                                     $wynik=$rezultat->fetch_assoc();
-                                                    
                                                     echo"<option value=".$wynik['id']." selected>".$wynik['nazwa_wydatku']."</option>";
                                                     
                                                     for($i=2; $i <= $rezultat->num_rows; $i++)
@@ -316,7 +314,7 @@
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
                                     <label for="komentarz" class="relative"> Komentarz (opcjonalnie): </label>
                                     <br />
-                                    <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320" minlength="5"></textarea>
+                                    <textarea name="komentarz" id="komentarz" rows="4" cols="20" maxlength="320"></textarea>
                                 </div>
 
 
