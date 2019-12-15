@@ -57,7 +57,7 @@
 		}	
 
 		$haslo_hash = password_hash($haslo1, PASSWORD_DEFAULT);
-		
+		//echo $haslo_hash;
 		//Bot or not? Oto jest pytanie!
 		$sekret = "6Lc5fMQUAAAAAL9brIKUtHAl9w5tbkv2ToZydilU";
 		
@@ -107,7 +107,7 @@
 
 				if ($wszystko_OK==true)
 				{
-					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
+					//Hurra, wszystkie testy zaliczone, dodajemy do bazy
 					
 					if ($polaczenie->query("INSERT INTO uzytkownicy(id_uzytkownika,imie_uzytkownika,email,haslo) VALUES (NULL, '$imie', '$email', '$haslo_hash')"))
 					{

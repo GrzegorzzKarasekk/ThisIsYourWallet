@@ -396,31 +396,33 @@
                                                         <?php
                                                         if(isset($_SESSION['e_date_in_MODAL_INCOME']))
                                                             {
-                                                               echo'<span style="color:red; font-size:75%;"> '.$_SESSION['e_date_in_MODAL_INCOME'].'</span>';
+                                                               echo'<span style="color:red; font-size:75%;"> '.$_SESSION['e_date_in_MODAL_INCOME'].'</span><br />';
                                                             }
                                                         ?>
+                                                        <label for="income" style="font-weight: 700;"> Kwota:</label> <label><input type="number" id="income" name="kwotaPrzychodu" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" value="<?php echo $kwota; ?>"></label><br />
+                                                        
+                                                        <label for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</label>
                                                         <br />
-                                                        <label for="income" style="font-weight: 700;"> Kwota:</label> <label><input type="number" id="income" name="kwotaPrzychodu" placeholder="Podaj kwotę przychodu" step="0.01" min="0.00" value="<?php echo $kwota; ?>"></label>
+                                                        <select id="kategoria" name="kategoria" style="width:100%;">
+                                                        <?php 
+                                                            $rezultat3 = $polaczenie->query("SELECT *  FROM przychody_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
+                                                            if($rezultat3->num_rows > 0)
+                                                            {
+                                                                $wynik3=$rezultat3->fetch_assoc();
+                                                                echo"<option value=".$wynik3['id']." selected>".$wynik3['nazwa_przychodu']."</option>";
 
-                                                        <fieldset>
-                                                            <?php 
-                                                                $rezultat3 = $polaczenie->query("SELECT *  FROM przychody_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
-                                                                if ($rezultat3->num_rows > 0)
+                                                                for($i=2; $i <= $rezultat->num_rows; $i++)
                                                                 {
                                                                     $wynik3=$rezultat3->fetch_assoc();
-                                                                    echo "<div><label><input type='radio' value=".$wynik3['id']." name='kategoria' checked>".$wynik3['nazwa_przychodu']."</label></div>";
-
-                                                                    while($wynik3=$rezultat3->fetch_assoc())
-                                                                    {
-                                                                    echo "<div><label><input type='radio' value=".$wynik3['id']." name='kategoria'>".$wynik3['nazwa_przychodu']."</label></div>";
-                                                                    }
+                                                                    echo"<option value=".$wynik3['id'].">".$wynik3['nazwa_przychodu']."</option>";
                                                                 }
-                                                                else
-                                                                {
-                                                                        echo "BRAK KATEGORII!";
-                                                                }                                               
-                                                            ?>
-                                                        </fieldset>
+                                                            }
+                                                            else
+                                                            {
+                                                                echo "BRAK KATEGORII!";
+                                                            }                                               
+                                                        ?>
+                                                        </select>
 
                                                         <label for="komentarz" class="relative" style="font-weight: 700; value=" <?php echo $komentarz; ?>""> Komentarz (opcjonalnie): </label>
                                                         <br />
@@ -561,8 +563,10 @@
                                                         <label for="dateE" style="font-weight: 700;"> Data:</label><label><input type="date" id="dateE" name="dzien" min="2000-01-01" value="<?php echo $wynik['data_wydatku']; ?>"></label>
                                                         <br />
 
-                                                        <label for="expense" style="font-weight: 700;"> Kwota:</label> <label><input type="number" id="expense" name="kwotaWydatku" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00" value="<?php echo $kwota; ?>"></label>
+                                                        <label for="expense" style="font-weight: 700;"> Kwota:</label> <label><input type="number" id="expense" name="kwotaWydatku" placeholder="Podaj kwotę wydatku" step="0.01" min="0.00" value="<?php echo $kwota; ?>"></label><br />
 
+                                                        <label for="platnosc" style="font-weight: 700;"> Sposób płatności transakcji:</label>
+                                                        <br />
                                                         <fieldset>
                                                             <?php 
                                                                 $rezultat4 = $polaczenie->query("SELECT *  FROM sposoby_platnosci_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
@@ -583,9 +587,9 @@
                                                             ?>
                                                         </fieldset>
 
-                                                        <label for="kategoria" style="font-weight: 700;"> Kategoria transakcji:</label>
+                                                        <label for="kategoriaE" style="font-weight: 700;"> Kategoria transakcji:</label>
                                                         <br />
-                                                        <select id="kategoria" name="kategoria" style="width:100%;">
+                                                        <select id="kategoriaE" name="kategoria" style="width:100%;">
                                                          <?php 
                                                             $rezultat5 = $polaczenie->query("SELECT * FROM wydatki_przypisane_do_uzytkownika WHERE id_uzytkownika =".$_SESSION['id_uzytkownika']);
                                                             if ($rezultat5->num_rows > 0)
