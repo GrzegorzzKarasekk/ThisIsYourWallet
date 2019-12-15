@@ -211,21 +211,23 @@
                                     }
                                 ?>
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
-                                    <fieldset>
 
-                                        <legend> Kategoria: </legend>
-                                       
-                                       <?php 
+                                    <lebel for="kategoria"> Kategoria transakcji:</lebel>
+                                    <br />
+                                    <select id="kategoria" name="kategoria" style="width:100%;">
+
+                                       <?php
                                         require_once "connect.php";
                                         mysqli_report(MYSQLI_REPORT_STRICT);
-                                                                                
-                                        try  
+                                        
+                                        try 
                                         {
                                             $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
                                             //Ogonki
                                             mysqli_query($polaczenie, "SET CHARSET utf8");
                                             mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
                                             //
+                                            
                                             if ($polaczenie->connect_errno!=0)
                                             {
                                                 throw new Exception(mysqli_connect_errno());
@@ -236,11 +238,11 @@
                                                 if ($rezultat->num_rows > 0)
                                                 {
                                                     $wynik=$rezultat->fetch_assoc();
-                                                    echo "<div><label><input type='radio' value=".$wynik['id']." name='kategoria' checked>".$wynik['nazwa_przychodu']."</label></div>";
+                                                    echo"<option value=".$wynik['id']." selected>".$wynik['nazwa_przychodu']."</option>";
                                                     
                                                     while($wynik=$rezultat->fetch_assoc())
                                                     {
-                                                    echo "<div><label><input type='radio' value=".$wynik['id']." name='kategoria'>".$wynik['nazwa_przychodu']."</label></div>";
+                                                    echo"<option value=".$wynik['id'].">".$wynik['nazwa_przychodu']."</option>";
                                                     }
                                                 }
                                                 else
@@ -256,8 +258,8 @@
                                         echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o dodanie przychodu w innym terminie!</span>';
                                         //echo '<br />Informacja developerska: '.$e;
                                         }
-                                        ?> 
-                                    </fieldset>
+                                        ?>           
+                                     </select>
                                 </div>
 
                                 <div class="wrapperForm col-12 col-md-6 mx-auto my-3 mb-2">
