@@ -36,7 +36,7 @@ session_start();
            exit(); 
         }
         
-        elseif(($_SESSION['niestandardowydzien1'] > $datadomyslna) ||($_SESSION['niestandardowydzien2'] > $datadomyslna))
+        elseif($_SESSION['niestandardowydzien1'] > $datadomyslna)
         {
             $wszystko_OK=false;
             $_SESSION['e_date']="Data nie może być większa od dzisiejszej!";
